@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Pictures\MainPicture.png" />
+    <None Remove="View\MainPicture.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="View-Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pictures\MainPicture.png" />
+    <Resource Include="View\MainPicture.png" />
+  </ItemGroup>
+
+</Project>
