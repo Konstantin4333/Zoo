@@ -9,6 +9,14 @@
       Title="Animals">
 
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/View/MainPicture.png"/>
+        </Grid.Background>
+        <GroupBox Header="Вход" Height="170" Width="300" Margin="0,0,30,30" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="18">
+            <Button Content="Login" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="60" Height="30"/>
+
+        </GroupBox>
+        <TextBox HorizontalAlignment="Right" Margin="0,0,120,130" Text="Username" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="180" Height="30" FontSize="14"/>
+        <TextBox Name="tbPass" HorizontalAlignment="Right" Margin="0,0,120,70" Text="Password" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="180" Height="30" FontSize="14" CharacterCasing="Lower" MaxLength="10" TextAlignment="Left"/>
     </Grid>
 </Page>

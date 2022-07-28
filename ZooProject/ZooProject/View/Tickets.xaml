@@ -9,6 +9,16 @@
       Title="Tickets">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBox Text="{Binding Text}" Grid.Column="0" />
+        <Button Padding="4,2,4,2" Command="{Binding ClickCommand}" Content="Click Me!" Grid.Column="1"/>
     </Grid>
 </Page>
