@@ -12,17 +12,17 @@ namespace ZooProject.Model
         public int  IdOrder { get; set; }
         // Table User
         [ForeignKey("User")]
-        public string NameOfUser { get; set; }
-        public int IdOfUser { get; set; }
+        public int IdUser { get; set; }
+        public User User { get; set; }
         // table Ticket
         [ForeignKey("Tickets")]
-        public string TicketType { get; set; }
-        public int NumOfTicket { get; set; }
-        
-       
-       
 
-        
+        public int IdOfTicket { get; set; }
+        public virtual Tickets Tickets { get; set; }
+
+
+
+
 
 
 

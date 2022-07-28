@@ -13,10 +13,11 @@ namespace ZooProject.Model
         public string Name { get; set; }
         public int NumOfTickets { get; set; }
         //
-        [ForeignKey("CategoryOfTicket")]
-        public string TicketCategoryId { get; set; }
-        public string TicketType { get; set; }
+        [ForeignKey("CategoryOfTickets")]
+        public int IdOfCategoryTicket { get; set; }
         
+        public virtual CategoryOfTickets CategoryOfTickets { get; set; }
+
 
 
 

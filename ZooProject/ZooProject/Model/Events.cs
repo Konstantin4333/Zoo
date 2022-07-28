@@ -11,11 +11,12 @@ namespace ZooProject.Model
         [Key]
         public int IdOfEvent { get; set; }
 
-        public double Date { get; set; }
+        public DateTime Date { get; set; }
         // Table EventType
         [ForeignKey("EventType")]
-        public string TypeOfEvent { get; set; }
-        public int TypeOfEventId { get; set; }
+       
+        public int IdTypeOfEvent { get; set; }
+        public virtual EventType EventType { get; set; }
 
     }
 }

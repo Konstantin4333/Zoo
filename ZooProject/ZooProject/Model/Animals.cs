@@ -15,7 +15,7 @@ namespace ZooProject.Model
         //
         [ForeignKey("CategoryOfAnimal")]
         public int AnimalCategoryID { get; set; }
-      //  public CategoryOfAnimal CategoryOfAnimal { get; set; }
+        public virtual CategoryOfAnimal CategoryOfAnimal { get; set; }
 
     }
 }
