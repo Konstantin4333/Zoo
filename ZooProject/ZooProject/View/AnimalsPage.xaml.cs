@@ -14,15 +14,13 @@ using System.Windows.Shapes;
 namespace ZooProject.View
 {
     /// <summary>
-    /// Interaction logic for Animals.xaml
+    /// Interaction logic for AnimalsPage.xaml
     /// </summary>
-    public partial class Animals : UserControl
+    public partial class AnimalsPage : Page
     {
-        public Animals()
+        public AnimalsPage()
         {
             InitializeComponent();
         }
-
-      
     }
 }

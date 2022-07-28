@@ -4,12 +4,7 @@ using System.Text;
 
 namespace ZooProject.View_Models
 {
-    class AnimalsViewModel : ViewModelBase
+    class TicketsViewModel : ViewModelBase
     {
-        public AnimalsViewModel()
-        {
-
-        }
-        
     }
 }

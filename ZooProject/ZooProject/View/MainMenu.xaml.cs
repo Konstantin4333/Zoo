@@ -8,6 +8,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ZooProject.View
@@ -15,11 +16,13 @@ namespace ZooProject.View
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Window
+    public partial class MainMenu : Page
     {
         public MainMenu()
         {
             InitializeComponent();
         }
+
+       
     }
 }

@@ -2,8 +2,14 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ZooProject"
+             xmlns:views="clr-namespace:ZooProject.View"
+             xmlns:viewmodels="clr-namespace:ZooProject.View_Models"
              StartupUri="View/LoginMenu.xaml">
+            
     <Application.Resources>
-         
+
+       
+
+
     </Application.Resources>
 </Application>
