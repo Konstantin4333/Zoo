@@ -22,7 +22,8 @@ namespace ZooProject
     {
         public MainWindow()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
+        //NavigationCommands
     }
 }

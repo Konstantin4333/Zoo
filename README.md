@@ -13,3 +13,5 @@ Basic project
 
 * Create Migrations
 
+* Added navigation between pages 
+

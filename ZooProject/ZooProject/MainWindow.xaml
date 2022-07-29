@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="973" Width="1300">
     <Grid>
-        
 
+        <Frame Source="/View/LoginMenu.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

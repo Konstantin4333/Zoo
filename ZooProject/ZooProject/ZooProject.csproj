@@ -7,8 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pictures\Animals.jfif" />
+    <None Remove="Pictures\Animals.png" />
+    <None Remove="Pictures\events.png" />
     <None Remove="Pictures\MainPicture.png" />
+    <None Remove="Pictures\tickets.jpg" />
     <None Remove="View\MainPicture.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="MainWindow.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +25,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="MainWindow.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\Animals.jfif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\Animals.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\events.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Pictures\MainPicture.png" />
+    <Resource Include="Pictures\tickets.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="View\MainPicture.png" />
   </ItemGroup>
 
