@@ -11,25 +11,19 @@
 
     <Grid ButtonBase.Click="Grid_Click">
 
-        <Grid.Background>
-            <ImageBrush ImageSource="/View/MainPicture.png"/>
-        </Grid.Background>
-
-        <WrapPanel Margin="10,10,422,327">
-            <v:NavButton Text="Животни" ImageSource="/Pictures/Animals.png" NavUri="/View/AnimalsPage.xaml" />
-            <v:NavButton Text="Евенти" ImageSource="/Pictures/events.png" NavUri="/View/Events.xaml"  />
-            <v:NavButton Text="Билети" ImageSource="/Pictures/tickets.jpg" NavUri="/View/Tickets.xaml" RenderTransformOrigin="0.94,0.479"  />
-        </WrapPanel>
-
-        <ComboBox Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,196,0,0" Height="30" />
 
 
 
-        <Button Content="Купи"   Width="100" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="666,395,0,0" FontWeight="Bold" FontSize="14" />
-        <Image HorizontalAlignment="Left" Height="196" Margin="496,170,0,0" VerticalAlignment="Top" Width="259"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,170,0,0" Text="Вид билет:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,275,0,0" Text="Брой билети:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
-        <ScrollBar  Width="200" VerticalAlignment="Top" Margin="7,301,0,0" Height="30" HorizontalAlignment="Left" />
+
+        <ComboBox Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,136,0,0" Height="30" />
+
+
+
+        <Button Content="Купи"   Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
+        <Image HorizontalAlignment="Left" Height="196" Margin="380,131,0,0" VerticalAlignment="Top" Width="260"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,110,0,0" Text="Вид билет:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="13,199,0,0" Text="Брой билети:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
+        <ScrollBar  Width="200" VerticalAlignment="Top" Margin="10,225,0,0" Height="30" HorizontalAlignment="Left" />
 
     </Grid>
 </Page>

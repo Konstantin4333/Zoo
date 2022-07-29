@@ -11,26 +11,19 @@
 
     <Grid ButtonBase.Click="Grid_Click">
 
-        <Grid.Background>
-            <ImageBrush ImageSource="/View/MainPicture.png"/>
-        </Grid.Background>
 
-        <WrapPanel Margin="5">
-            <v:NavButton Text="Животни" ImageSource="/Pictures/Animals.png" NavUri="/View/AnimalsPage.xaml" />
-            <v:NavButton Text="Евенти" ImageSource="/Pictures/events.png" NavUri="/View/Events.xaml"  />
-            <v:NavButton Text="Билети" ImageSource="/Pictures/tickets.jpg" NavUri="/View/Tickets.xaml" RenderTransformOrigin="0.94,0.479"  />
-        </WrapPanel>
-        <ComboBox Width="220" VerticalAlignment="Top" Margin="23,367,0,0" Height="30" HorizontalAlignment="Left" />
+
+        <ComboBox Width="220" VerticalAlignment="Top" Margin="23,356,0,0" Height="30" HorizontalAlignment="Left" />
 
 
 
-        <Button Content="Търси"   Width="100" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="652,382,0,0" FontWeight="Bold" FontSize="14" />
-        <Image HorizontalAlignment="Left" Height="163" Margin="243,160,0,0" VerticalAlignment="Top" Width="199"/>
-        <Calendar Margin="30,160,0,0" HorizontalAlignment="Left"/>
-        <TextBlock HorizontalAlignment="Left" Margin="30,134,0,0" Text="Изберете дата:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="23,341,0,0" Text="Изберете събитие:" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
-        <ListBox Margin="478,160,10,83"/>
-        <TextBlock HorizontalAlignment="Left" Margin="478,127,0,0" Text="Резултати:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
+        <Button Content="Търси"   Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
+        <Image HorizontalAlignment="Left" Height="163" Margin="234,50,0,0" VerticalAlignment="Top" Width="199"/>
+        <Calendar Margin="20,138,0,22" HorizontalAlignment="Left"/>
+        <TextBlock HorizontalAlignment="Left" Margin="23,110,0,0" Text="Изберете дата:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="23,330,0,0" Text="Изберете събитие:" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
+        <ListBox Margin="408,166,129,79"/>
+        <TextBlock HorizontalAlignment="Left" Margin="408,138,0,0" Text="Резултати:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
 
     </Grid>
 </Page>

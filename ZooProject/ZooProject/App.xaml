@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ZooProject"
              xmlns:views="clr-namespace:ZooProject.View"
              xmlns:viewmodels="clr-namespace:ZooProject.View_Models"
-             StartupUri="View/AnimalsPage.xaml">
+             StartupUri="View/LoginMenu.xaml">
             
     <Application.Resources>
 

@@ -6,31 +6,20 @@
       xmlns:local="clr-namespace:ZooProject.View"
       xmlns:v="clr-namespace:ZooProject"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="700"
       Title="AnimalsPage">
 
-    <Grid ButtonBase.Click="Grid_Click">
-        <Grid.Background>
-            <ImageBrush ImageSource="/View/MainPicture.png"/>
-        </Grid.Background>
+    <Grid >
 
-
-        <WrapPanel Margin="5">
-            <v:NavButton Text="Животни" ImageSource="/Pictures/Animals.png" NavUri="/View/AnimalsPage.xaml"  />
-            <v:NavButton Text="Евенти" ImageSource="/Pictures/events.png" NavUri="/View/Events.xaml"  />
-            <v:NavButton Text="Билети" ImageSource="/Pictures/tickets.jpg" NavUri="/View/Tickets.xaml" RenderTransformOrigin="0.94,0.479"  />
-        </WrapPanel>
-
-
-        <ComboBox Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,198,0,0" Height="30" />
-        <ComboBox Width="200" VerticalAlignment="Top" Margin="24,278,0,0" Height="30" HorizontalAlignment="Left" />
+        <ComboBox Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,126,0,0" Height="30" />
+        <ComboBox Width="200" VerticalAlignment="Top" Margin="20,269,0,0" Height="30" HorizontalAlignment="Left" />
 
 
 
-        <Button Content="Търси" Command="NavigationCommands.BrowseForward"  Width="100" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="648,381,0,0" FontWeight="Bold" FontSize="14" />
-        <Image HorizontalAlignment="Left" Height="196" Margin="378,136,0,0" VerticalAlignment="Top" Width="392"/>
-        <TextBlock HorizontalAlignment="Left" Margin="26,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16" Text="Вид животно:"/>
-        <TextBlock HorizontalAlignment="Left" Margin="26,252,0,0" Text="Резултати:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
+        <Button Content="Търси" Command="NavigationCommands.BrowseForward"  Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
+        <Image HorizontalAlignment="Left" Height="196" Margin="286,32,0,0" VerticalAlignment="Top" Width="392"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16" Text="Вид животно:"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,243,0,0" Text="Резултати:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
 
     </Grid>
 </Page>

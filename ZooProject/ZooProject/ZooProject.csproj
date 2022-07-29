@@ -9,10 +9,15 @@
   <ItemGroup>
     <None Remove="Pictures\Animals.jfif" />
     <None Remove="Pictures\Animals.png" />
+    <None Remove="Pictures\Buy-Tickets %281%29.png" />
     <None Remove="Pictures\events.png" />
     <None Remove="Pictures\MainPicture.png" />
     <None Remove="Pictures\tickets.jpg" />
+    <None Remove="View\Animals.png" />
+    <None Remove="View\Buy-Tickets %281%29.png" />
+    <None Remove="View\events.png" />
     <None Remove="View\MainPicture.png" />
+    <None Remove="View\tickets.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +39,9 @@
     <Resource Include="Pictures\Animals.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Pictures\Buy-Tickets (1).png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Pictures\events.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -41,7 +49,11 @@
     <Resource Include="Pictures\tickets.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="View\Animals.png" />
+    <Resource Include="View\Buy-Tickets (1).png" />
+    <Resource Include="View\events.png" />
     <Resource Include="View\MainPicture.png" />
+    <Resource Include="View\tickets.jpg" />
   </ItemGroup>
 
   <ItemGroup>

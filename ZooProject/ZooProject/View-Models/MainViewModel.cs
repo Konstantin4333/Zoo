@@ -11,18 +11,14 @@ namespace ZooProject.View_Models
     {
         private string username;
         private string password;
-      
-       
-        public string Username { get { return username; } set { username = value; } }
-        private ViewModelBase _choisedViewModel;
-        public ViewModelBase ChoisedViewModel
+
+
+        private ViewModelBase selectedViewModle;
+
+        public ViewModelBase SelectedViewModel
         {
-            get { return _choisedViewModel; }
-            set
-            {
-                _choisedViewModel = value;
-                OnPropertyChanged(nameof(ChoisedViewModel));
-            }
+            get { return selectedViewModle; }
+            set { selectedViewModle = value; OnPropertyChanged(nameof(SelectedViewModel)); }
         }
         public ICommand NavigatePages { get; set; }
         public MainViewModel()

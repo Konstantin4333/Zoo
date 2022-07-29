@@ -38,7 +38,7 @@ namespace ZooProject.Command
             {
                 case "Login":
                    // if (loginViewModel.Username == loginViewModel.User.Name)
-                        mainViewModel.ChoisedViewModel = new LoginMenuViewModel();
+                        mainViewModel.SelectedViewModel = new LoginMenuViewModel();
                     //else MessageBox.Show("Грешни данни");
                     break;
                

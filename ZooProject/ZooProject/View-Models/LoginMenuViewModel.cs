@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ZooProject.View;
@@ -42,11 +43,10 @@ namespace ZooProject.View_Models
                 {
                    // FillAutopartsList();
                     
-                       // Window window = new SearchView();
-                    Page page = new AnimalsPage();
-
-                    
-                      //  System.Windows.Application.Current.Windows[0].Close();
+                       Window window = new MainMenuWindow();
+                    //   Page page = new AnimalsPage();
+                    window.Show();
+                    System.Windows.Application.Current.Windows[0].Close();
                     
                 }));
             }
