@@ -12,6 +12,7 @@ namespace ZooProject.Model
         public int IdOfEvent { get; set; }
 
         public DateTime Date { get; set; }
+        
         // Table EventType
         [ForeignKey("EventType")]
        

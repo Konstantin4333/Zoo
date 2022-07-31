@@ -5,19 +5,45 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZooProject.View"
       xmlns:v="clr-namespace:ZooProject"
+      xmlns:viewmodel="clr-namespace:ZooProject.View_Models"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="700"
       Title="AnimalsPage">
 
+
+
+
+
+    <Page.DataContext>
+        <viewmodel:AnimalsViewModel/>
+    </Page.DataContext>
+
     <Grid >
 
-        <ComboBox Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,126,0,0" Height="30" />
-        <ComboBox Width="200" VerticalAlignment="Top" Margin="20,269,0,0" Height="30" HorizontalAlignment="Left" />
+        <ComboBox
+            ItemsSource="{Binding CategoryOfAnimalChoices}"
+            DisplayMemberPath="Name" 
+            SelectedItem="{Binding Path=CatAnim}"
+            SelectedValuePath="Name"
+            SelectedValue="{Binding Name, Mode=TwoWay}" 
+            
+            
+            Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,126,0,0" Height="30" />
+
+        <ComboBox  
+            ItemsSource="{Binding AnimalsChoices}"
+            DisplayMemberPath="Name" 
+            SelectedItem="{Binding Path=SAnimal}"
+            SelectedValuePath="Name"
+            SelectedValue="{Binding Name, Mode=TwoWay}" 
+            
+            
+            Width="200" VerticalAlignment="Top" Margin="20,269,0,0" Height="30" HorizontalAlignment="Left" />
 
 
 
-        <Button Content="Търси" Command="NavigationCommands.BrowseForward"  Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
-        <Image HorizontalAlignment="Left" Height="196" Margin="286,32,0,0" VerticalAlignment="Top" Width="392"/>
+        <Button Content="Търси" Command="{Binding Search}"  Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
+        <Image HorizontalAlignment="Left" Height="196" Margin="397,111,0,0" VerticalAlignment="Top" Width="280" Source="/Pictures/Animals.png"/>
         <TextBlock HorizontalAlignment="Left" Margin="20,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16" Text="Вид животно:"/>
         <TextBlock HorizontalAlignment="Left" Margin="20,243,0,0" Text="Резултати:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
 

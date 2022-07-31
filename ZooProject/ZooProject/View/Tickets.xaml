@@ -5,25 +5,55 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZooProject.View"
       xmlns:v="clr-namespace:ZooProject"
+      xmlns:z="clr-namespace:ZooProject.View_Models"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Tickets">
 
-    <Grid ButtonBase.Click="Grid_Click">
+    <Page.DataContext>
+        <z:TicketsViewModel/>
+    </Page.DataContext>
+    <Grid >
 
 
 
-
-
-        <ComboBox Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,136,0,0" Height="30" />
+        <ComboBox
+            ItemsSource="{Binding CategoryOfTicketsChoices}"
+            DisplayMemberPath="TicketType" 
+            SelectedItem="{Binding Path=CategoryOfTickets}"
+            SelectedValuePath="TicketType"
+            SelectedValue="{Binding TicketType, Mode=TwoWay}" 
+            
+            Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,145,0,0" Height="30" />
 
 
 
         <Button Content="Купи"   Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
-        <Image HorizontalAlignment="Left" Height="196" Margin="380,131,0,0" VerticalAlignment="Top" Width="260"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,110,0,0" Text="Вид билет:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="13,199,0,0" Text="Брой билети:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
-        <ScrollBar  Width="200" VerticalAlignment="Top" Margin="10,225,0,0" Height="30" HorizontalAlignment="Left" />
+        <TextBlock HorizontalAlignment="Left" Margin="24,119,0,0" Text="Вид билет:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,291,0,0" Text="Брой билети:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
+        <ScrollBar Name="numOfTickets" Width="200" VerticalAlignment="Top" Margin="21,317,0,0" Height="30" HorizontalAlignment="Left" />
+        <ListView ItemsSource="{Binding Path= CategoryOfTicketsChoices}" SelectedValue="{Binding CategoryOfTickets}" Margin="294,136,164,127">
+            <ListView.View>
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Резултат">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=TicketType}"
+                                    Header="Вид на билета" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=price}"  Header="Брой билети" Width="100"/>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding NumOfTickets}" Header="Единична цена" Width="110"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <TextBlock HorizontalAlignment="Left" Margin="24,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="125" FontSize="16" FontWeight="Bold" Text="Крайна цена:"/>
+        <TextBlock x:Name="priceOfTickets" HorizontalAlignment="Left" Margin="138,388,0,0" Text="{Binding PriceOfTickets}" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Height="27" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="216,388,0,0" Text="лв." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Height="27" FontWeight="Bold" Width="40"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="125" FontSize="16" FontWeight="Bold" Text="Единична цена:" Background="#FFD6D6D6"/>
+        <TextBlock
+            x:Name="priceOfTicket" 
+            Text ="{Binding Path=CategoryOfTickets.price}"
+            HorizontalAlignment="Left" Margin="149,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Height="27" FontWeight="Bold" Background="#FFD6D6D6" Width="25"/>
+        <TextBlock HorizontalAlignment="Left" Margin="174,198,0,0" Text="лв." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Height="27" FontWeight="Bold" Width="28" Background="#FFD6D6D6" TextAlignment="Center"/>
+        <Button Command="{Binding AddCommand}" Content="Добави"   Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,164,30" FontWeight="Bold" FontSize="14" />
 
     </Grid>
 </Page>

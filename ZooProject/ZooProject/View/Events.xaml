@@ -5,25 +5,47 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZooProject.View"
         xmlns:v="clr-namespace:ZooProject"
+        xmlns:z="clr-namespace:ZooProject.View_Models"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Events">
 
-    <Grid ButtonBase.Click="Grid_Click">
+    <Page.DataContext>
+        <z:EventsViewModel/>
+    </Page.DataContext>
+
+    <Grid>
 
 
 
-        <ComboBox Width="220" VerticalAlignment="Top" Margin="23,356,0,0" Height="30" HorizontalAlignment="Left" />
+        <ComboBox
+             ItemsSource="{Binding EventChoices}"
+            DisplayMemberPath="Type" 
+            SelectedItem="{Binding Path=EventType}"
+            SelectedValuePath="Type"
+            SelectedValue="{Binding Type, Mode=TwoWay}" 
+            
+            Width="220" VerticalAlignment="Top" Margin="23,356,0,0" Height="30" HorizontalAlignment="Left" />
 
 
 
-        <Button Content="Търси"   Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
-        <Image HorizontalAlignment="Left" Height="163" Margin="234,50,0,0" VerticalAlignment="Top" Width="199"/>
-        <Calendar Margin="20,138,0,22" HorizontalAlignment="Left"/>
+        <Button  Command="{Binding Search}" Content="Търси"   Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
+        <Image HorizontalAlignment="Left" Height="163" Margin="262,138,0,0" VerticalAlignment="Top" Width="199"/>
+        <Calendar Margin="20,138,0,125" HorizontalAlignment="Left" Width="177"/>
         <TextBlock HorizontalAlignment="Left" Margin="23,110,0,0" Text="Изберете дата:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
         <TextBlock HorizontalAlignment="Left" Margin="23,330,0,0" Text="Изберете събитие:" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
-        <ListBox Margin="408,166,129,79"/>
-        <TextBlock HorizontalAlignment="Left" Margin="408,138,0,0" Text="Резултати:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
+        <ListView ItemsSource="{Binding Path= EventsChoices}" SelectedValue="{Binding EventType}" Margin="507,159,30,86">
+            <ListView.View>
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Searched Parts">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=EventType}"
+                                    Header="Event Type" Width="80"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Date}"  Header="Date" Width="80"/>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=SerialNumber}" Header="Animal" Width="110"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock HorizontalAlignment="Left" Margin="507,138,0,0" Text="Резултати:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
 
     </Grid>
 </Page>

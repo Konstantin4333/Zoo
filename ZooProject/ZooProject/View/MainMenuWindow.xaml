@@ -17,7 +17,7 @@
     <Grid>
 
         <Grid.Background>
-            <ImageBrush ImageSource="/View/MainPicture.png"/>
+            <ImageBrush ImageSource="/Pictures/MainPicture.png"/>
         </Grid.Background>
 
 
@@ -26,17 +26,17 @@
 
         <Button x:Name="btnAnimal" Content="" HorizontalAlignment="Left" Margin="294,42,0,0" VerticalAlignment="Top" Height="66" Width="85" FontWeight="Bold" FontSize="20" Click="btnAnimal_Click">
             <Button.Background>
-                <ImageBrush ImageSource="/View/Animals.png"/>
+                <ImageBrush ImageSource="/Pictures/Animals.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="btnEvent"  Content="" HorizontalAlignment="Left" Margin="400,42,0,0" VerticalAlignment="Top" Height="66" Width="85" FontWeight="Bold" FontSize="20" RenderTransformOrigin="1.862,0.601" Click="btnEvent_Click">
             <Button.Background>
-                <ImageBrush ImageSource="/View/events.png"/>
+                <ImageBrush ImageSource="/Pictures/events.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="btnTickets" Content="" HorizontalAlignment="Left" Margin="502,46,0,0" VerticalAlignment="Top" Height="64" Width="85" FontWeight="Bold" FontSize="20" Click="btnTickets_Click">
             <Button.Background>
-                <ImageBrush ImageSource="/View/Buy-Tickets (1).png"/>
+                <ImageBrush ImageSource="/Pictures/Buy-Tickets (1).png"/>
             </Button.Background>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="310,22,0,0" Text="Животни" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"/>

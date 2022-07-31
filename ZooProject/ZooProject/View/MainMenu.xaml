@@ -15,7 +15,7 @@
     <Grid>
         
         <Grid.Background>
-            <ImageBrush ImageSource="/View/MainPicture.png"/>
+            <ImageBrush ImageSource="/Pictures/MainPicture.png"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
