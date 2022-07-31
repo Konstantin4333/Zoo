@@ -144,26 +144,7 @@ namespace ZooProject.View_Models
             }
         }
 
-        public void FillDatabase()
-        {
-            if (dBContext.animals.ToList().Count == 0)
-            {
-                Animals animal1 = new Animals("Слон", "Най-едрото животно"
-                    , File.ReadAllBytes("D:/MICROINVEST/Zoos/ZooProject/ZooProject/Pictures/Слон.jfif"), 1);
-                Animals animal2 = new Animals("Дива котка", "Диво животно"
-                    , File.ReadAllBytes("D:/MICROINVEST/Zoos/ZooProject/ZooProject/Pictures/divakotka.jpg"), 1);
-                Animals animal3 = new Animals("Орел", "Най-големи хищник в небето"
-                    , File.ReadAllBytes("D:/MICROINVEST/Zoos/ZooProject/ZooProject/Pictures/orel.jpg"), 3);
-                Animals animal4 = new Animals("Усойница", "Oтровна змия"
-                    , File.ReadAllBytes("D:/MICROINVEST/Zoos/ZooProject/ZooProject/Pictures/usoinica.jpg"), 3);
-
-                dBContext.animals.Add(animal1);
-                dBContext.animals.Add(animal2);
-                dBContext.animals.Add(animal3);
-                dBContext.animals.Add(animal4);
-                dBContext.SaveChanges();
-            }
-        }
+       
 
 
 
