@@ -20,32 +20,47 @@
 
     <Grid >
 
-        <ComboBox
-            ItemsSource="{Binding CategoryOfAnimalChoices}"
-            DisplayMemberPath="Name" 
-            SelectedItem="{Binding Path=CatAnim}"
-            SelectedValuePath="Name"
-            SelectedValue="{Binding Name, Mode=TwoWay}" 
-            
-            
-            Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,126,0,0" Height="30" />
-
-        <ComboBox  
-            ItemsSource="{Binding AnimalsChoices}"
-            DisplayMemberPath="Name" 
-            SelectedItem="{Binding Path=SAnimal}"
-            SelectedValuePath="Name"
-            SelectedValue="{Binding Name, Mode=TwoWay}" 
-            
-            
-            Width="200" VerticalAlignment="Top" Margin="20,269,0,0" Height="30" HorizontalAlignment="Left" />
-
 
 
         <Button Content="Търси" Command="{Binding Search}"  Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
-        <Image HorizontalAlignment="Left" Height="196" Margin="397,111,0,0" VerticalAlignment="Top" Width="280" Source="/Pictures/Animals.png"/>
-        <TextBlock HorizontalAlignment="Left" Margin="20,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16" Text="Вид животно:"/>
-        <TextBlock HorizontalAlignment="Left" Margin="20,243,0,0" Text="Резултати:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
+        <GroupBox Margin="30,150,0,0" Header="Виж животно" HorizontalAlignment="Left" Width="239" VerticalAlignment="Top" FontWeight="Bold" FontSize="16">
+            <ComboBox
+            ItemsSource="{Binding CategoryOfAnimalChoices}"
+            DisplayMemberPath="Name" 
+            SelectedItem="{Binding CatAnim}"
+            SelectedValuePath="Name"
+            SelectedValue="{Binding Name, Mode=TwoWay}" 
+            
+            
+            Width="200" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,5,10,0" Height="30" />
+        </GroupBox>
+        <GroupBox Margin="31,0,0,179" Header="Резултати" HorizontalAlignment="Left" Width="238" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="16">
+            <ComboBox  
+            ItemsSource="{Binding AnimalsChoices}"
+            DisplayMemberPath="Name" 
+            SelectedItem="{Binding SAnimal}"
+            SelectedValuePath="Name"
+            SelectedValue="{Binding Name, Mode=TwoWay}" 
+            
+            
+            Width="200" VerticalAlignment="Top" Margin="10,5,10,0" Height="30" HorizontalAlignment="Stretch" />
+        </GroupBox>
+        <GroupBox Margin="0,0,30,113" Header="Резултати" Width="238" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold">
+            <Image HorizontalAlignment="Stretch" Height="140" Margin="10,10,10,10" VerticalAlignment="Stretch" Width="206" Source="{Binding Path= SAnimal.AnimalImage}" />
+        </GroupBox>
+        <GroupBox Margin="30,0,0,10" Header="Описание" Width="239" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Height="164">
+            <TextBlock       HorizontalAlignment="Stretch" Margin="5,5,5,5" Text="{Binding  SAnimal.Description}" TextWrapping="Wrap">
+                <TextBlock.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFFAFAFA"/>
+                        <GradientStop Color="#FF9F9D9D" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Background>
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="0"/>
+                </TextBlock.Effect>
+            </TextBlock>
+        </GroupBox>
 
     </Grid>
 </Page>

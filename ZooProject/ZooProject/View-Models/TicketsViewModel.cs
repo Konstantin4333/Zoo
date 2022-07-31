@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using ZooProject.Data;
 using ZooProject.Model;
@@ -15,6 +16,8 @@ namespace ZooProject.View_Models
         {
             ViewModelBase viewModelBase;
             FillCategoryOfTicketsChoices();
+           
+            ticketsList = new List<Tickets>();
         }
 
         public ZooDataContext dBContext = new ZooDataContext();
@@ -23,10 +26,18 @@ namespace ZooProject.View_Models
         private int numOfTickets; //NumOfTickets
         private string _sTypeOfTic;
         private CategoryOfTickets _categoryOfTickets;
-
-
-      
-    public int NumOfTickets
+        private List<Tickets> addedTickets;
+        private ICommand search;
+        private ICommand buy;
+        private List<Tickets> ticketsList;
+        private double finalPrice;
+        public double FinalPrice {
+            get { return finalPrice; }
+            set { finalPrice = value;
+                OnPropertyChanged("FinalPrice");
+            }
+        }
+        public int NumOfTickets
 {
     get { return numOfTickets; }
     set
@@ -34,12 +45,71 @@ namespace ZooProject.View_Models
         numOfTickets = value;
 
         OnPropertyChanged("NumOfTickets");
-        Console.WriteLine();
+       
     }
 }
+        public List<Tickets> AddedTickets
+        {
+            get { return addedTickets; }
+            set { addedTickets = value;
+                OnPropertyChanged("AddedTickets");
+            }
+        }
+        public void AddTicket()
+        {
+            Tickets ticket = new Tickets();
+            ticket.CategoryOfTickets = CategoryOfTickets;
+            ticket.NumOfTickets = NumOfTickets;
+            
+            ticketsList.Add(ticket);
+            AddedTickets = new List<Tickets>(ticketsList);
+            FinalPrice += CategoryOfTickets.price * NumOfTickets;
+        }
+        private Tickets _ticket;
+        public Tickets Ticket
+        {
+            get { return _ticket; }
+            set
+            {
+                _ticket = value;
 
-        
+                OnPropertyChanged("Ticket");
 
+            }
+        }
+        public ICommand Search
+        {
+            get
+            {
+                return search ?? (search = new DelegateCommand(() =>
+                {
+
+                    AddTicket();
+                    
+
+                }));
+            }
+        }
+
+        public ICommand Buy
+        {
+            get
+            {
+                return buy ?? (buy = new DelegateCommand(() =>
+                {
+
+                    MessageBox.Show("Вие успешно направихте поръчката. ");
+                    NumOfTickets = 0;
+                    AddedTickets = null;
+                    FinalPrice = 0;
+                    CategoryOfTicketsChoices = null;
+
+                    PriceOfTickets = 0;
+
+
+                }));
+            }
+        }
         public CategoryOfTickets CategoryOfTickets
         {
             get { return _categoryOfTickets; }
@@ -55,7 +125,7 @@ namespace ZooProject.View_Models
 
         public void FillCategoryOfTicketsChoices()
         {
-            categoryOfTicketsChoices = dBContext.categorryOfTickets
+            CategoryOfTicketsChoices = dBContext.categorryOfTickets
             .Select(z => z).ToList();
         }
 
@@ -108,5 +178,6 @@ namespace ZooProject.View_Models
             }
         }
 
+        public object MessageBoxButtons { get; private set; }
     }
 }

@@ -18,5 +18,23 @@ namespace ZooProject.Model
         public int AnimalCategoryID { get; set; }
         public virtual CategoryOfAnimal CategoryOfAnimal { get; set; }
 
+
+        public Animals()
+        {
+
+        }
+        public Animals(string name, string description, byte[] picture,int category)
+        {
+
+            Name = name;
+            Description = description;
+            AnimalImage = picture;
+            AnimalCategoryID = category;
+
+        }
+
+
+
     }
+
 }

@@ -17,8 +17,10 @@ namespace ZooProject.View_Models
         public ZooDataContext dBContext = new ZooDataContext();
         private List<EventType> eventTypeChoices = new List<EventType>();
         private List<Events> eventss = new List<Events>();
-
+        
         private EventType _eventType;
+        private DateTime? _date = null;
+        private Events _events;
         public EventType EventType
         {
             get { return _eventType; }
@@ -30,7 +32,7 @@ namespace ZooProject.View_Models
                 
             }
         }
-        private Events _events;
+       
         public Events Events
         {
             get { return _events; }
@@ -43,6 +45,18 @@ namespace ZooProject.View_Models
             }
         }
 
+        public DateTime? DDate
+        {
+            get { return _date; }
+            set
+            {
+                _date = value;
+                EventType = null;
+                EventsChoices = null;
+                OnPropertyChanged("DDate");
+                
+            }
+        }
         public void FillEventsCategoryChoices()
         {
             eventTypeChoices = dBContext.eventType
@@ -50,16 +64,42 @@ namespace ZooProject.View_Models
         }
         public void FillEvents()
         {
+            if (EventType == null && DDate != null)
+            {
+              
+                EventsChoices = dBContext.events.Where(a => a.Date == DDate)
+            .Select(a => a).ToList();
+               
+            }
+            else if (EventType != null && DDate == null)
+            {
+                EventsChoices = dBContext.events.Where(a => a.IdTypeOfEvent == EventType.IdTypeOfEvent)
+            .Select(a => a).ToList();
+            }
+            else if (DDate != null && EventType != null)
+            {
+                EventsChoices = dBContext.events.Where(a => a.IdTypeOfEvent == EventType.IdTypeOfEvent && a.Date == DDate)
+            .Select(a => a).ToList();
+            }
+            else
+            {
+                EventsChoices = dBContext.events
+                 .Select(a => a).ToList();
+            }
+        }
+        /*public void FillEvents()
+        {
             if (EventType != null)
             {
-                eventss = dBContext.events.Where(a => a.IdOfEvent == EventType.IdTypeOfEvent)
+                EventsChoices = dBContext.events.Where(a => a.IdTypeOfEvent == EventType.IdTypeOfEvent)
             .Select(w => w).ToList();
             }else
             {
-                eventss = dBContext.events
+                EventsChoices = dBContext.events
                  .Select(w => w).ToList();
             }
         }
+*/
         public List<EventType> EventChoices
         {
             get { return eventTypeChoices; }
@@ -82,6 +122,7 @@ namespace ZooProject.View_Models
                 if (eventss != value)
                 {
                     eventss = value;
+                  
                     OnPropertyChanged("EventsChoices");
                 }
             }
@@ -98,8 +139,29 @@ namespace ZooProject.View_Models
                 return search ?? (search = new DelegateCommand(() =>
                 {
 
-
+                   
                     FillEvents();
+
+
+
+                }));
+            }
+        }
+
+        private DelegateCommand clearAll;
+
+
+        public ICommand ClearAll
+        {
+            get
+            {
+                return clearAll ?? (clearAll = new DelegateCommand(() =>
+                {
+
+
+                    EventType = null;
+                    EventsChoices = null;
+                    DDate = null;
 
 
 
@@ -111,7 +173,7 @@ namespace ZooProject.View_Models
             ViewModelBase viewModelBase;
             
             FillEventsCategoryChoices();
-            FillEvents();
+         //  FillEvents();
         }
 
     }

@@ -7,45 +7,63 @@
         xmlns:v="clr-namespace:ZooProject"
         xmlns:z="clr-namespace:ZooProject.View_Models"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="900"
       Title="Events">
 
     <Page.DataContext>
         <z:EventsViewModel/>
     </Page.DataContext>
 
-    <Grid>
+    <Grid Margin="0,23,0,-23">
+        <Grid.OpacityMask>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.OpacityMask>
 
 
 
-        <ComboBox
-             ItemsSource="{Binding EventChoices}"
-            DisplayMemberPath="Type" 
-            SelectedItem="{Binding Path=EventType}"
-            SelectedValuePath="Type"
-            SelectedValue="{Binding Type, Mode=TwoWay}" 
-            
-            Width="220" VerticalAlignment="Top" Margin="23,356,0,0" Height="30" HorizontalAlignment="Left" />
-
-
-
-        <Button  Command="{Binding Search}" Content="Търси"   Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
-        <Image HorizontalAlignment="Left" Height="163" Margin="262,138,0,0" VerticalAlignment="Top" Width="199"/>
-        <Calendar Margin="20,138,0,125" HorizontalAlignment="Left" Width="177"/>
-        <TextBlock HorizontalAlignment="Left" Margin="23,110,0,0" Text="Изберете дата:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="23,330,0,0" Text="Изберете събитие:" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
-        <ListView ItemsSource="{Binding Path= EventsChoices}" SelectedValue="{Binding EventType}" Margin="507,159,30,86">
+        <Button  Command="{Binding Search}" Content="Търси"   Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
+        <ListView ItemsSource="{Binding Path= EventsChoices}" SelectedValue="{Binding Events}" Margin="268,138,268,147">
             <ListView.View>
                 <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Searched Parts">
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=EventType}"
-                                    Header="Event Type" Width="80"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Date}"  Header="Date" Width="80"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}"
+                                    Header="Събития" Width="130"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Date}"  Header="Дата" Width="130"/>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=SerialNumber}" Header="Animal" Width="110"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBlock HorizontalAlignment="Left" Margin="507,138,0,0" Text="Резултати:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="268,110,0,0" Text="Резултати:" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="20" UseLayoutRounding="False" FontWeight="Bold" FontSize="16"/>
+
+        <GroupBox Header="Описание" Margin="0,124,30,124" HorizontalAlignment="Right" Width="199" FontSize="16" FontWeight="Bold" UseLayoutRounding="True" BorderBrush="#FFE0ECF3" Foreground="#FF353535">
+            <GroupBox.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </GroupBox.OpacityMask>
+            <TextBlock Text="{Binding Events.Description}" HorizontalAlignment="Stretch" Margin="5,5,5,5" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center"  Height="172" Width="179" FontWeight="Bold" FontStyle="Italic" FontSize="16" LineHeight="6" RenderTransformOrigin="0.5,0">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="0"/>
+                </TextBlock.Effect>
+            </TextBlock>
+        </GroupBox>
+        <GroupBox Header="Изберете категория" Margin="20,0,0,147" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Height="90" VerticalAlignment="Bottom" Width="220">
+            <ComboBox
+             ItemsSource="{Binding EventChoices}"
+            DisplayMemberPath="Type" 
+            SelectedItem="{Binding EventType}"
+            SelectedValuePath="Type"
+            SelectedValue="{Binding Type, Mode=TwoWay}" 
+            
+            Width="168" VerticalAlignment="Top" Margin="5,5,5,0" Height="30" HorizontalAlignment="Stretch" />
+        </GroupBox>
+        <GroupBox Header="Изберете дата" Margin="20,138,0,0" HorizontalAlignment="Left" Width="220" VerticalAlignment="Top" Height="148" FontWeight="Bold" FontSize="16">
+            <DatePicker SelectedDate="{Binding DDate}" HorizontalAlignment="Stretch" Margin="5,5,5,5"/>
+        </GroupBox>
+        <Button  Command="{Binding ClearAll}" Content="Изчисти всички полета"   Width="178" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,168,30" FontWeight="Bold" FontSize="14" />
 
     </Grid>
 </Page>
