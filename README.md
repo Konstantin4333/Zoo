@@ -15,4 +15,4 @@ Basic project
 
 * Added navigation between pages 
 
-* Added last changes
+* Added last changes.
