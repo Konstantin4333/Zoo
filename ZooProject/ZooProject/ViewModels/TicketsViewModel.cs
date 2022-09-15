@@ -14,7 +14,7 @@ namespace ZooProject.View_Models
     {
         public TicketsViewModel()
         {
-            ViewModelBase viewModelBase;
+           // ViewModelBase viewModelBase;
             FillCategoryOfTicketsChoices();
            
             ticketsList = new List<Tickets>();
@@ -24,7 +24,7 @@ namespace ZooProject.View_Models
         private List<CategoryOfTickets> categoryOfTicketsChoices = new List<CategoryOfTickets>();
         private List<string> test = new List<string>();
         private int numOfTickets; //NumOfTickets
-        private string _sTypeOfTic;
+        
         private CategoryOfTickets _categoryOfTickets;
         private List<Tickets> addedTickets;
         private ICommand search;

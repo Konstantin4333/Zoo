@@ -12,12 +12,12 @@ namespace ZooProject.View_Models
     class EventsViewModel : ViewModelBase
     {
 
-       
+
 
         public ZooDataContext dBContext = new ZooDataContext();
         private List<EventType> eventTypeChoices = new List<EventType>();
         private List<Events> eventss = new List<Events>();
-        
+
         private EventType _eventType;
         private DateTime? _date = null;
         private Events _events;
@@ -29,10 +29,10 @@ namespace ZooProject.View_Models
                 _eventType = value;
                 EventsChoices = null;
                 OnPropertyChanged("EventType");
-                
+
             }
         }
-       
+
         public Events Events
         {
             get { return _events; }
@@ -41,7 +41,7 @@ namespace ZooProject.View_Models
                 _events = value;
 
                 OnPropertyChanged("Events");
-               
+
             }
         }
 
@@ -54,7 +54,7 @@ namespace ZooProject.View_Models
                 EventType = null;
                 EventsChoices = null;
                 OnPropertyChanged("DDate");
-                
+
             }
         }
         public void FillEventsCategoryChoices()
@@ -66,10 +66,10 @@ namespace ZooProject.View_Models
         {
             if (EventType == null && DDate != null)
             {
-              
+
                 EventsChoices = dBContext.events.Where(a => a.Date == DDate)
             .Select(a => a).ToList();
-               
+
             }
             else if (EventType != null && DDate == null)
             {
@@ -122,7 +122,7 @@ namespace ZooProject.View_Models
                 if (eventss != value)
                 {
                     eventss = value;
-                  
+
                     OnPropertyChanged("EventsChoices");
                 }
             }
@@ -139,7 +139,7 @@ namespace ZooProject.View_Models
                 return search ?? (search = new DelegateCommand(() =>
                 {
 
-                   
+
                     FillEvents();
 
 
@@ -170,10 +170,10 @@ namespace ZooProject.View_Models
         }
         public EventsViewModel()
         {
-            ViewModelBase viewModelBase;
-            
+            //  ViewModelBase viewModelBase;
+
             FillEventsCategoryChoices();
-         //  FillEvents();
+            //  FillEvents();
         }
 
     }

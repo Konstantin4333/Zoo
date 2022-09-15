@@ -14,6 +14,7 @@
                         IdAnimal = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Description = c.String(),
+                        AnimalImage = c.Binary(),
                         AnimalCategoryID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.IdAnimal)
@@ -45,6 +46,8 @@
                     {
                         IdOfEvent = c.Int(nullable: false, identity: true),
                         Date = c.DateTime(nullable: false),
+                        Name = c.String(),
+                        Description = c.String(),
                         IdTypeOfEvent = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.IdOfEvent)
@@ -79,6 +82,7 @@
                     {
                         IdUser = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        Password = c.String(),
                     })
                 .PrimaryKey(t => t.IdUser);
             

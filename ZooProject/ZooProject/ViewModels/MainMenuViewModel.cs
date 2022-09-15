@@ -5,7 +5,6 @@ using System.Text;
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using ZooProject.View;
 
 namespace ZooProject.View_Models
@@ -22,11 +21,11 @@ namespace ZooProject.View_Models
            }*/
         public MainMenuViewModel()
         {
-            ViewModelBase viewModelBase;
+            //ViewModelBase viewModelBase;
 
         }
         private DelegateCommand commandNext;
-        private object FrameWithinGrid;
+      
 
         public ICommand CommandNext
         {

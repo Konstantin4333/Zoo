@@ -10,9 +10,13 @@
     <None Remove="Pictures\Animals.jfif" />
     <None Remove="Pictures\Animals.png" />
     <None Remove="Pictures\Buy-Tickets %281%29.png" />
+    <None Remove="Pictures\divakotka.jpg" />
     <None Remove="Pictures\events.png" />
     <None Remove="Pictures\MainPicture.png" />
+    <None Remove="Pictures\orel.jpg" />
     <None Remove="Pictures\tickets.jpg" />
+    <None Remove="Pictures\usoinica.jpg" />
+    <None Remove="Pictures\Слон.jfif" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,13 +41,17 @@
     <Resource Include="Pictures\Buy-Tickets (1).png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Pictures\divakotka.jpg" />
     <Resource Include="Pictures\events.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pictures\MainPicture.png" />
+    <Resource Include="Pictures\orel.jpg" />
     <Resource Include="Pictures\tickets.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Pictures\usoinica.jpg" />
+    <Resource Include="Pictures\Слон.jfif" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Data.Entity;
-using System.Text;
+
 using ZooProject.Model;
 
 namespace ZooProject.Data
@@ -12,6 +11,8 @@ namespace ZooProject.Data
         {
 
         }
+
+
         public DbSet<Animals> animals { get; set; }
         public DbSet<CategoryOfAnimal> categoryOfAnimal { get; set; }
         public DbSet<CategoryOfTickets> categorryOfTickets { get; set; }
