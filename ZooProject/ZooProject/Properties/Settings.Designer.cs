@@ -30,7 +30,7 @@ namespace ZooProject.Properties {
             "rue")]
         public string DbConnect {
             get {
-              return ((string)(this["DbConnect"]));
+                return ((string)(this["DbConnect"]));
             }
         }
     }

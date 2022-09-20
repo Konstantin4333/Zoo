@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace ZooProject.Command
+namespace ZooProject.Commands
 {
     public class Command : ICommand
     {

@@ -178,6 +178,6 @@ namespace ZooProject.View_Models
             }
         }
 
-        public object MessageBoxButtons { get; private set; }
+        
     }
 }

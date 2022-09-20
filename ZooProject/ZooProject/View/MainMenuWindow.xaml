@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:ZooProject.View"
         xmlns:viewmodels="clr-namespace:ZooProject.View_Models"
         xmlns:v="clr-namespace:ZooProject"
-        
+        Icon="/Pictures/Creative-Tail-Animal-dog.svg.png"
         mc:Ignorable="d"
-        Title="MainMenuWindow" Height="600" Width="900   ">
+        Title="MainMenuWindow" Height="600px" Width="900px">
 
 
 
@@ -20,34 +20,103 @@
             <ImageBrush ImageSource="/Pictures/MainPicture.png"/>
         </Grid.Background>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.80*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalAlignment="Center"
+                   Text="Животни"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Bottom"
+                   FontWeight="Bold"/>
+        <TextBlock Grid.Row="0"
+                   Grid.Column="2"
+                   HorizontalAlignment="Center"  
+                   Text="Събития" 
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Bottom" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" 
+                   Grid.Column="3" 
+                   HorizontalAlignment="Center"
+                   Text="Билети"
+                   TextWrapping="Wrap" 
+                   VerticalAlignment="Bottom"
+                   FontWeight="Bold"/>
 
 
-
-
-        <Button x:Name="btnAnimal" Content="" HorizontalAlignment="Left" Margin="294,42,0,0" VerticalAlignment="Top" Height="66" Width="85" FontWeight="Bold" FontSize="20" Click="btnAnimal_Click">
+        <Button x:Name="btnAnimal"
+                Grid.Column="1"
+                Grid.Row="1"
+                Content=""
+                HorizontalAlignment="Stretch"
+                 
+                VerticalAlignment="Stretch"
+                Height="66"
+                Width="85"
+                FontWeight="Bold" 
+                FontSize="20"
+                Click="btnAnimal_Click" Foreground="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="/Pictures/Animals.png"/>
+                <ImageBrush ImageSource="/Pictures/Creative-Tail-Animal-dog.svg.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnEvent"  Content="" HorizontalAlignment="Left" Margin="400,42,0,0" VerticalAlignment="Top" Height="66" Width="85" FontWeight="Bold" FontSize="20" RenderTransformOrigin="1.862,0.601" Click="btnEvent_Click">
+
+        <Button x:Name="btnEvent"
+                Grid.Row="1"
+                Grid.Column="2"
+                Content=""
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Width="85"
+                FontWeight="Bold"
+                FontSize="20"
+                RenderTransformOrigin="1.862,0.601"
+                Click="btnEvent_Click" Foreground="{x:Null}" Height="60">
             <Button.Background>
                 <ImageBrush ImageSource="/Pictures/events.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnTickets" Content="" HorizontalAlignment="Left" Margin="502,46,0,0" VerticalAlignment="Top" Height="64" Width="85" FontWeight="Bold" FontSize="20" Click="btnTickets_Click">
+
+        <Button x:Name="btnTickets"
+                Grid.Row="1"
+                Grid.Column="3"
+                Content="" 
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Height="64"
+                Width="85" 
+                FontWeight="Bold"
+                FontSize="20" 
+                Click="btnTickets_Click" Foreground="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Pictures/Buy-Tickets (1).png"/>
             </Button.Background>
         </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="310,22,0,0" Text="Животни" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="416,24,0,0" Text="Събития" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="524,24,0,0" Text="Билети" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"/>
+
+       
 
 
 
-
-
-        <Frame x:Name="Main" Margin="0,0,0,0"/>
+        <Frame NavigationUIVisibility="Hidden" Grid.Row="2" Grid.Column="0" Grid.RowSpan="8" Grid.ColumnSpan="5" x:Name="Main" Margin="0,0,0,0"/>
 
     </Grid>
 

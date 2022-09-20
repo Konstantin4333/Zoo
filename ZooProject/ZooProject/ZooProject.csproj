@@ -10,8 +10,10 @@
     <None Remove="Pictures\Animals.jfif" />
     <None Remove="Pictures\Animals.png" />
     <None Remove="Pictures\Buy-Tickets %281%29.png" />
+    <None Remove="Pictures\Creative-Tail-Animal-dog.svg.png" />
     <None Remove="Pictures\divakotka.jpg" />
     <None Remove="Pictures\events.png" />
+    <None Remove="Pictures\LoginIcon.jpg" />
     <None Remove="Pictures\MainPicture.png" />
     <None Remove="Pictures\orel.jpg" />
     <None Remove="Pictures\tickets.jpg" />
@@ -41,10 +43,12 @@
     <Resource Include="Pictures\Buy-Tickets (1).png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Pictures\Creative-Tail-Animal-dog.svg.png" />
     <Resource Include="Pictures\divakotka.jpg" />
     <Resource Include="Pictures\events.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Pictures\LoginIcon.jpg" />
     <Resource Include="Pictures\MainPicture.png" />
     <Resource Include="Pictures\orel.jpg" />
     <Resource Include="Pictures\tickets.jpg">
@@ -55,10 +59,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
+    <Compile Update="Commands\Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Commands\Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -68,13 +77,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
+    <EmbeddedResource Update="Commands\Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Commands\Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

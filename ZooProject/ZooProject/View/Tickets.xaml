@@ -8,6 +8,7 @@
       xmlns:z="clr-namespace:ZooProject.View_Models"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      ShowsNavigationUI="False"
       Title="Tickets">
 
     <Page.DataContext>
@@ -15,9 +16,162 @@
     </Page.DataContext>
     <Grid >
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition />
+
+            <ColumnDefinition />
+            <ColumnDefinition Width="0.25*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Command="{Binding Buy}"
+                Grid.Row="8"
+                Grid.Column="4"
+                Content="Купи" 
+                Width="100"
+                Height="30"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontWeight="Bold"
+                FontSize="14" />
+
+        <Button Command="{Binding Search}"
+                Grid.Row="7"
+                Grid.Column="3"
+                Content="Добави" 
+                Width="100"
+                Height="30"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                
+                FontWeight="Bold"
+                FontSize="14" />
+
+        <ListView ItemsSource="{Binding Path= AddedTickets}" 
+                  Grid.Row="1"
+                  Grid.RowSpan="3"
+                  Grid.Column="3"
+                  Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Резултат">
+                    <GridViewColumn DisplayMemberBinding="{Binding CategoryOfTickets.TicketType}"
+                                    Header="Вид на билета" Width="140"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding NumOfTickets}"  Header="Брой билети" Width="100"/>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding CategoryOfTickets.price}" Header="Единична цена" Width="110"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <GroupBox Grid.Row="1"
+                  Grid.RowSpan="2"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2"
+                  Header="Вид на билета&#xD;&#xA;" 
+                  HorizontalAlignment="Left"
+                  Width="240"
+                  VerticalAlignment="Top"
+                  FontWeight="Bold"
+                  FontSize="16">
+            <ComboBox
+            ItemsSource="{Binding CategoryOfTicketsChoices}"
+            DisplayMemberPath="TicketType" 
+            SelectedItem="{Binding CategoryOfTickets}"
+            SelectedValuePath="TicketType"
+            SelectedValue="{Binding TicketType, Mode=TwoWay}" 
+            Width="200" 
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Margin="10,5,10,5"
+            Height="40" />
+        </GroupBox>
+
+        <GroupBox Grid.Row="4"
+                  Grid.RowSpan="2"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2"
+                  Header="Брой билети&#xA;"
+                  HorizontalAlignment="Left"
+                  Width="240"
+                  VerticalAlignment="Top"
+                  FontWeight="Bold" 
+                  FontSize="16">
+            <TextBox Text="{Binding NumOfTickets}" HorizontalAlignment="Stretch" Margin="5,1,5,5"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="178" Height="27"/>
+        </GroupBox>
+
+        <TextBlock
+            x:Name="priceOfTicket" 
+            Grid.Column="1"
+            Grid.Row="3"
+            Text ="{Binding Path=CategoryOfTickets.price}"
+            HorizontalAlignment="Right"
+             TextWrapping="Wrap"
+            VerticalAlignment="Top"
+            FontSize="16"
+            Height="28"
+            FontWeight="Bold"
+            Background="#FFD6D6D6"
+             MinWidth="26"
+            
+            MaxWidth="200"/>
+
+        <TextBlock x:Name="priceOfTickets"
+                   HorizontalAlignment="Right"
+                   Grid.Column="1"
+                   Grid.Row="6"
+                   
+                   Text="{Binding FinalPrice}"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top"
+                   FontSize="16"
+                   Height="28"
+                   FontWeight="Bold"
+                   Background="#FFD6D6D6"
+                  
+                   MinWidth="36"
+            MaxWidth="500"/>
+        
+        <TextBlock HorizontalAlignment="Left"
+                   Grid.Column="1"
+                   Grid.Row="3"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top"
+                   Height="28"
+                   Width="152" 
+                   FontSize="15" 
+                   FontWeight="Bold"
+                   Text="Единична цена в лв:"
+                   Background="#FFD6D6D6"/>
 
 
-        <Button Command="{Binding Buy}" Content="Купи"   Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
+        <TextBlock Grid.Row="6"
+                   Grid.Column="1"
+                   HorizontalAlignment="Left"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top"
+                   Height="28"
+                   Width="151"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Text="Крайна цена в лв:"
+                   Background="#FFD6D6D6"/>
+
+      
+        
+        
+        <!--<Button Command="{Binding Buy}" Content="Купи"   Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />
         <ListView ItemsSource="{Binding Path= AddedTickets}"   Margin="294,136,180,118">
             <ListView.View>
                 <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Резултат">
@@ -51,7 +205,7 @@
             <TextBox Text="{Binding NumOfTickets}" HorizontalAlignment="Stretch" Margin="5,1,5,5"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="178" Height="27"/>
         </GroupBox>
         <TextBlock HorizontalAlignment="Left" Margin="33,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="124" FontSize="16" FontWeight="Bold" Text="Крайна цена:" Background="#FFD6D6D6"/>
-        <TextBlock HorizontalAlignment="Left" Margin="183,360,0,0" Text="лв." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Height="28" FontWeight="Bold" Width="28" Background="#FFD6D6D6" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="183,360,0,0" Text="лв." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" Height="28" FontWeight="Bold" Width="28" Background="#FFD6D6D6" TextAlignment="Center"/>-->
 
     </Grid>
 </Page>

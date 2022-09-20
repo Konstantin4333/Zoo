@@ -5,9 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ZooProject.View"
       xmlns:viewmodels="clr-namespace:ZooProject.View_Models"
-      
+     
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="700"
+      d:DesignHeight="400" d:DesignWidth="500"
+        MinHeight="400px" MinWidth="400px"
+        Height="400px" Width="500px"
+       HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+         Icon="/Pictures/LoginIcon.jpg"
+    
       Title="LoginMenu">
 
     <Window.DataContext>
@@ -18,12 +24,44 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Pictures/MainPicture.png"/>
         </Grid.Background>
-        <GroupBox Header="Вход" Height="170" Width="300" Margin="0,0,30,30" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="18">
-            <Button  Command="{Binding CommandNext}" Content="Login" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="60" Height="30"/>
+        <GroupBox Header="Вход"
+                  Height="170" 
+                  Width="300" 
+                  Margin="0,0,30,30"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Bottom" 
+                  FontWeight="Bold"
+                  FontSize="18">
+            <Button 
+                Command="{Binding CommandNext}"
+                Content="Login" HorizontalAlignment="Right"
+                Margin="0,0,10,10"
+                VerticalAlignment="Bottom"
+                Width="60"
+                Height="30"/>
 
         </GroupBox>
-        <TextBox Name="username" HorizontalAlignment="Right" Margin="0,0,120,130" Text="{Binding Username}" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="180" Height="30" FontSize="14"/>
-        <TextBox Name="tbPass" HorizontalAlignment="Right" Margin="0,0,120,70" Text="{Binding Password}" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="180" Height="30" FontSize="14" CharacterCasing="Lower" MaxLength="10" TextAlignment="Left"/>
+        <TextBox Name="username"
+                 HorizontalAlignment="Right"
+                 Margin="0,0,120,130"
+                 Text="{Binding Username}"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Bottom"
+                 Width="180" 
+                 Height="30" 
+                 FontSize="14"/>
+        <TextBox Name="tbPass"
+                 HorizontalAlignment="Right"
+                 Margin="0,0,120,70" 
+                 Text="{Binding Password}"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Bottom"
+                 Width="180" 
+                 Height="30" 
+                 FontSize="14"
+                 CharacterCasing="Lower"
+                 MaxLength="10"
+                 TextAlignment="Left"/>
 
 
 
