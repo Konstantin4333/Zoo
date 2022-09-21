@@ -91,9 +91,10 @@
                           ColumnHeaderToolTip="Searched Parts">
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Name}"
                                     Header="Събития"
-                                    Width="130"/>
+                                    
+                                    />
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Date}" 
-                                    Header="Дата" Width="130"/>
+                                    Header="Дата" />
 
                 </GridView>
             </ListView.View>

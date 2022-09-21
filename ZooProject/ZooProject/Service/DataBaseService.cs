@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,16 +9,16 @@ using ZooProject.View_Models;
 
 namespace ZooProject.Service
 {
-    internal class DataBaseService
+   internal class DataBaseService
     {
         public DataBaseService()
         {
-           
+            Check();
 
         }
         public ZooDataContext dBContext = new ZooDataContext();
 
-       // AnimalsViewModel animalsViewModel = new AnimalsViewModel();
+        // AnimalsViewModel animalsViewModel = new AnimalsViewModel();
         public void FillDatabase()
         {
             if (dBContext.animals.ToList().Count != 0)
@@ -38,26 +39,28 @@ namespace ZooProject.Service
                 dBContext.animals.Add(animal4);
                 dBContext.SaveChanges();
             }
-           // FillCatAnimalChoices();
+            // FillCatAnimalChoices();
 
         }
 
-        /*public void FillCatAnimalChoices()
+
+        public void FillCatAnimalChoices()
         {
-            animalsViewModel.CategoryOfAnimalChoices = dBContext.categoryOfAnimal
-             .Select(catAnim => catAnim).ToList();
+            var animViewModel = new AnimalsViewModel();
+            animViewModel.CategoryOfAnimalChoices = dBContext.categoryOfAnimal
+            .Select(catAnim => catAnim).ToList();
         }
         public void FillAnimalChoices()
         {
-
-            if (animalsViewModel.CatAnim != null)
+            var animViewModel = new AnimalsViewModel();
+            if (animViewModel.CatAnim != null)
             {
-                animalsViewModel.AnimalsChoices = dBContext.animals.Where(anim => anim.AnimalCategoryID == animalsViewModel.CatAnim.IdOfCategory)
+                animViewModel.AnimalsChoices = dBContext.animals.Where(anim => anim.AnimalCategoryID == animViewModel.CatAnim.IdOfCategory)
            .Select(anim => anim).ToList();
             }
             else
             {
-                animalsViewModel.AnimalsChoices = dBContext.animals
+                animViewModel.AnimalsChoices = dBContext.animals
             .Select(anim => anim).ToList();
             }
 
@@ -65,19 +68,33 @@ namespace ZooProject.Service
         }
         public void FillAnimalByCat()
         {
+            var animViewModel = new AnimalsViewModel();
 
-
-            if (animalsViewModel.CatAnim != null)
+            if (animViewModel.CatAnim != null)
             {
-                animalsViewModel.AnimalsChoices = dBContext.animals.Where(Anim => Anim.AnimalCategoryID == animalsViewModel.SAnimal.AnimalCategoryID)
+                animViewModel.AnimalsChoices = dBContext.animals.Where(Anim => Anim.AnimalCategoryID == animViewModel.SAnimal.AnimalCategoryID)
            .Select(animcat => animcat).ToList();
             }
             else
             {
-                animalsViewModel.AnimalsChoices = dBContext.animals
+                animViewModel.AnimalsChoices = dBContext.animals
             .Select(Anim => Anim).ToList();
             }
 
-        }*/
+        
+       }
+        public void Check()
+        {
+            try
+            {
+                FillCatAnimalChoices();
+                FillAnimalChoices();
+                FillAnimalByCat();
+            }
+            catch(Exception e)
+            {
+            Console.WriteLine("Error" + e.Message);
+            }
+        }
     }
 }

@@ -15,32 +15,29 @@ namespace ZooProject.View_Models
 {
     class AnimalsViewModel : ViewModelBase
     {
+       
         public AnimalsViewModel()
         {
-           // dataBaseService.FillDatabase();
-           FillCatAnimalChoices();
+            var dataBaseService = new DataBaseService();
+            // dataBaseService.FillDatabase();
+            dataBaseService.FillCatAnimalChoices();
         }
         #region Fields
-        DataBaseService dataBaseService = new DataBaseService();
-        protected ZooDataContext dBContext = new ZooDataContext();
-        protected List<CategoryOfAnimal> categoryOfAnimalChoices = new List<CategoryOfAnimal>();
-        protected List<Animals> animalsChoices = new List<Animals>();
-        protected List<Animals> showAnimals;
-        protected CategoryOfAnimal _catAnim;
-        protected Animals _animal;
+       
         private ICommand search;
         #endregion
         #region Properties
         public CategoryOfAnimal CatAnim
         {
+
             get { return _catAnim; }
             set
             {
-              
+                var dataBaseService = new DataBaseService();
                 _catAnim = value;
                 SAnimal = null;
-             //   OnPropertyChanged("CatAnim");
-                 FillAnimalChoices();
+                //   OnPropertyChanged("CatAnim");
+                dataBaseService.FillAnimalChoices();
                 AnimalsChoices = null;
             }
         }
@@ -64,14 +61,14 @@ namespace ZooProject.View_Models
             get { return categoryOfAnimalChoices; }
             set
             {
-
+                var dataBaseService = new DataBaseService();
                 if (categoryOfAnimalChoices != value)
                 {
                     categoryOfAnimalChoices = value;
                     OnPropertyChanged("CategoryOfAnimalChoices");
 
 
-                    FillAnimalChoices();
+                    dataBaseService.FillAnimalChoices();
                 }
             }
         }
@@ -110,7 +107,8 @@ namespace ZooProject.View_Models
             {
                 return search ?? (search = new DelegateCommand(() =>
                 {
-                 FillAnimalChoices();
+                    var dataBaseService = new DataBaseService();
+                    dataBaseService.FillAnimalChoices();
                 }));
             }
         }
@@ -121,43 +119,43 @@ namespace ZooProject.View_Models
         }*/
         #endregion
         #region FillFromDataBase
-        public void FillCatAnimalChoices()
-        {
-            categoryOfAnimalChoices = dBContext.categoryOfAnimal
-            .Select(catAnim => catAnim).ToList();
-        }
-        public void FillAnimalChoices()
-        {
+        //public void FillCatAnimalChoices()
+        //{
+        //    CategoryOfAnimalChoices = dBContext.categoryOfAnimal
+        //    .Select(catAnim => catAnim).ToList();
+        //}
+        //public void FillAnimalChoices()
+        //{
 
-            if (CatAnim != null)
-            {
-                AnimalsChoices = dBContext.animals.Where(anim => anim.AnimalCategoryID == CatAnim.IdOfCategory)
-           .Select(anim => anim).ToList();
-            }
-            else
-            {
-                animalsChoices = dBContext.animals
-            .Select(anim => anim).ToList();
-            }
-
-
-        }
-        public void FillAnimalByCat()
-        {
+        //    if (CatAnim != null)
+        //    {
+        //        AnimalsChoices = dBContext.animals.Where(anim => anim.AnimalCategoryID == CatAnim.IdOfCategory)
+        //   .Select(anim => anim).ToList();
+        //    }
+        //    else
+        //    {
+        //        animalsChoices = dBContext.animals
+        //    .Select(anim => anim).ToList();
+        //    }
 
 
-            if (CatAnim != null)
-            {
-                animalsChoices = dBContext.animals.Where(Anim => Anim.AnimalCategoryID == SAnimal.AnimalCategoryID)
-           .Select(animcat => animcat).ToList();
-            }
-            else
-            {
-                animalsChoices = dBContext.animals
-            .Select(Anim => Anim).ToList();
-            }
+        //}
+        //public void FillAnimalByCat()
+        //{
 
-        }
+
+        //    if (CatAnim != null)
+        //    {
+        //        animalsChoices = dBContext.animals.Where(Anim => Anim.AnimalCategoryID == SAnimal.AnimalCategoryID)
+        //   .Select(animcat => animcat).ToList();
+        //    }
+        //    else
+        //    {
+        //        animalsChoices = dBContext.animals
+        //    .Select(Anim => Anim).ToList();
+        //    }
+
+        //}
         #endregion
     }
 }
