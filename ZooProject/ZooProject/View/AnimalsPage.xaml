@@ -19,17 +19,17 @@
         <viewmodel:AnimalsViewModel/>
     </Page.DataContext>
 
-    <Grid >
+    <Grid Width="auto" Height="auto" >
 
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*"/>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.25*"/>
@@ -67,7 +67,6 @@
             SelectedItem="{Binding CatAnim}"
             SelectedValuePath="Name"
             SelectedValue="{Binding Name, Mode=TwoWay}" 
-            Width="200" 
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Top"
                 Margin="10,5,10,0"
@@ -88,8 +87,7 @@
             DisplayMemberPath="Name" 
             SelectedItem="{Binding SAnimal}"
             SelectedValuePath="Name"
-            SelectedValue="{Binding Name, Mode=TwoWay}" 
-            Width="200"
+            SelectedValue="{Binding Name, Mode=TwoWay}"
             VerticalAlignment="Top"
              Margin="10,5,10,0"
              Height="30"

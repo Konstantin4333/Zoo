@@ -7,9 +7,11 @@ namespace ZooProject.Model
 {
     class CategoryOfAnimal
     {
+      //  public int idOfCategory = 0;
         [Key]
         public int IdOfCategory { get; set; }
         public string Name { get; set; }
+
        
     }
 }

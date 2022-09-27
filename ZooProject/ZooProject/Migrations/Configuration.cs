@@ -3,21 +3,151 @@
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.IO;
     using System.Linq;
+    using ZooProject.Data;
+    using ZooProject.Service;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ZooProject.Data.ZooDataContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ZooDataContext>
     {
+
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ZooProject.Data.ZooDataContext context)
+        protected override void Seed(ZooDataContext context)
         {
-            //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
+            context.categoryOfAnimal.AddOrUpdate(x => x.IdOfCategory,
+                new Model.CategoryOfAnimal() { IdOfCategory = 1, Name = "Бозайник" },
+                 new Model.CategoryOfAnimal() { IdOfCategory = 2, Name = "Влечуго" },
+                  new Model.CategoryOfAnimal() { IdOfCategory = 3, Name = "Земноводно" },
+                   new Model.CategoryOfAnimal() { IdOfCategory = 4, Name = "Птици" }
+                );
+
+
+
+            context.animals.AddOrUpdate(x => x.IdAnimal,
+                new Model.Animals()
+                {
+
+                    IdAnimal = 1,
+                    Name = "Орел",
+                    Description = "Най-големи хищник в небето",
+
+                    AnimalImage = File.ReadAllBytes(@"Pictures/orel.jpg"),
+                    AnimalCategoryID = 4,
+
+                },
+                 new Model.Animals()
+                 {
+                     IdAnimal = 2,
+                     Name = "Слон",
+                     Description = "Най-едрото животно",
+                     AnimalImage = File.ReadAllBytes(@"Pictures/Слон.jfif"),
+                     AnimalCategoryID = 1,
+
+                 },
+                    new Model.Animals()
+                    {
+                        IdAnimal = 3,
+                        Name = "Усойница",
+                        Description = "Oтровна змия",
+                        AnimalImage = File.ReadAllBytes(@"Pictures/usoinica.jpg"),
+                        AnimalCategoryID = 2,
+
+                    },
+                      new Model.Animals()
+                      {
+                          IdAnimal = 4,
+                          Name = "Костенурка",
+                          Description = "Костенурките имат много здрава черупка",
+                          AnimalImage = File.ReadAllBytes(@"Pictures/kostenurka.jpg"),
+                          AnimalCategoryID = 3,
+
+                      },
+                    new Model.Animals()
+                      {
+                          IdAnimal = 5,
+                          Name = "Гущер",
+                          Description = "Гущерите са прекрасни.",
+                          AnimalImage = File.ReadAllBytes(@"Pictures/gushter.jfif"),
+                          AnimalCategoryID = 3,
+
+                      }
+
+                );
+            //   context.animals.RemoveRange();
+
+            context.user.AddOrUpdate(x => x.IdUser,
+                new Model.User() { IdUser = 1, Name = "admin", Password = "admin" },
+                new Model.User() { IdUser = 2, Name = "1", Password = "1" }
+                );
+
+            context.categorryOfTickets.AddOrUpdate(x => x.IdOfCategoryTicket,
+                new Model.CategoryOfTickets() { IdOfCategoryTicket = 1, TicketType = "Семеен", price = 8 },
+                new Model.CategoryOfTickets() { IdOfCategoryTicket = 2, TicketType = "Редовен", price = 12 },
+                new Model.CategoryOfTickets() { IdOfCategoryTicket = 3, TicketType = "Ученически", price = 5 },
+                new Model.CategoryOfTickets() { IdOfCategoryTicket = 4, TicketType = "Пенсионер/Дете", price = 0 }
+                );
+
+            context.eventType.AddOrUpdate(x => x.IdTypeOfEvent,
+                new Model.EventType() { IdTypeOfEvent = 1, Type = "Сутрешен" },
+                new Model.EventType() { IdTypeOfEvent = 2, Type = "Обеден" },
+                new Model.EventType() { IdTypeOfEvent = 3, Type = "Вечерен" }
+                );
+            context.events.AddOrUpdate(x => x.IdTypeOfEvent,
+                new Model.Events()
+                {
+                    IdTypeOfEvent = 1,
+                    Date = DateTime.Today,
+                    Name = "Слонски прояви",
+                    Description = "Наблудение над слонските действия",
+                },
+                new Model.Events()
+                {
+                    IdTypeOfEvent = 1,
+                    Date = new DateTime(2022,9,30),
+                    Name = "Слонски прояви",
+                    Description = "Наблудение над слонските действия",
+                },
+                new Model.Events()
+                {
+                    IdTypeOfEvent = 1,
+                    Date = new DateTime(2022, 10, 1),
+                    Name = "Слонски прояви",
+                    Description = "Наблудение над слонските действия",
+                },
+                new Model.Events()
+                {
+                    IdTypeOfEvent = 2,
+                    Date = new DateTime(2022, 10, 1),
+                    Name = "Змийски прояви",
+                    Description = "Наблудение на змията в средата си как ловува",
+                },
+                new Model.Events()
+                {
+                    IdTypeOfEvent = 2,
+                    Date = DateTime.Today,
+                    Name = "Костенурски развлечения",
+                    Description = "По всяко време може да се наблюдава, действията на костенурката",
+                },
+                new Model.Events()
+                {
+                    IdTypeOfEvent = 2,
+                    Date = DateTime.Today,
+                    Name = "Орела Кирчо",
+                    Description = "По всяко време може да се наблюдава Кирчо орелчето",
+                },
+                new Model.Events()
+                {
+                    IdTypeOfEvent = 3,
+                    Date = new DateTime(2022, 10, 1),
+                    Name = "Слонска баня",
+                    Description = "Вечерта може да се наблудава как слоните се къпят",
+                }
+                );
         }
     }
 }

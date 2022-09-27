@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -14,59 +15,81 @@ namespace ZooProject.View_Models
     {
         public TicketsViewModel()
         {
-           // ViewModelBase viewModelBase;
+
+            AddedTickets = new ObservableCollection<CategoryOfTickets>();
             FillCategoryOfTicketsChoices();
-           
-            ticketsList = new List<Tickets>();
+
+            ticketsList = new List<CategoryOfTickets>();
         }
 
         public ZooDataContext dBContext = new ZooDataContext();
         private List<CategoryOfTickets> categoryOfTicketsChoices = new List<CategoryOfTickets>();
         private List<string> test = new List<string>();
         private int numOfTickets; //NumOfTickets
-        
+        private int midPrice; //NumOfTickets
         private CategoryOfTickets _categoryOfTickets;
-        private List<Tickets> addedTickets;
+        private ObservableCollection<CategoryOfTickets> addedTickets;
         private ICommand search;
         private ICommand buy;
-        private List<Tickets> ticketsList;
+        private List<CategoryOfTickets> ticketsList;
         private double finalPrice;
-        public double FinalPrice {
+        public double FinalPrice
+        {
             get { return finalPrice; }
-            set { finalPrice = value;
+            set
+            {
+                finalPrice = value;
                 OnPropertyChanged("FinalPrice");
             }
         }
         public int NumOfTickets
-{
-    get { return numOfTickets; }
-    set
-    {
-        numOfTickets = value;
+        {
+            get { return numOfTickets; }
+            set
+            {
+                numOfTickets = value;
 
-        OnPropertyChanged("NumOfTickets");
-       
-    }
-}
-        public List<Tickets> AddedTickets
+                OnPropertyChanged("NumOfTickets");
+
+            }
+        }
+        public ObservableCollection<CategoryOfTickets> AddedTickets
         {
             get { return addedTickets; }
-            set { addedTickets = value;
+            set
+            {
+                addedTickets = value;
                 OnPropertyChanged("AddedTickets");
             }
         }
+
+        public double MidPrice
+        {
+            get { return midPrice; }
+            set
+            {
+                numOfTickets = (int)value;
+
+                OnPropertyChanged("NumOfTickets");
+
+            }
+        }
+
+
         public void AddTicket()
         {
-            Tickets ticket = new Tickets();
-            ticket.CategoryOfTickets = CategoryOfTickets;
-            ticket.NumOfTickets = NumOfTickets;
-            
-            ticketsList.Add(ticket);
-            AddedTickets = new List<Tickets>(ticketsList);
-            FinalPrice += CategoryOfTickets.price * NumOfTickets;
+            // Tickets ticket = new Tickets();
+            // observalcollection
+            CategoryOfTickets = CategoryOfTickets;
+            NumOfTickets = NumOfTickets;
+
+            ticketsList.Add(CategoryOfTickets);
+            AddedTickets.Add(ticketsList.FirstOrDefault())/* = new List<CategoryOfTickets>(ticketsList)*/;
+            FinalPrice += CategoryOfTickets.price * CategoryOfTickets.NumOfTickets;
+            // MidPrice = CategoryOfTickets.price * CategoryOfTickets.NumOfTickets;
         }
-        private Tickets _ticket;
-        public Tickets Ticket
+        private CategoryOfTickets _ticket;
+        public CategoryOfTickets Ticket
         {
             get { return _ticket; }
             set
@@ -85,7 +108,7 @@ namespace ZooProject.View_Models
                 {
 
                     AddTicket();
-                    
+
 
                 }));
             }
@@ -121,7 +144,7 @@ namespace ZooProject.View_Models
 
             }
         }
-        
+
 
         public void FillCategoryOfTicketsChoices()
         {
@@ -143,11 +166,11 @@ namespace ZooProject.View_Models
             }
         }
 
-        
+
 
         private int priceOfticket;
-        
-        
+
+
         public int PriceOfTickets
         {
             get { return priceOfticket; }
@@ -178,6 +201,6 @@ namespace ZooProject.View_Models
             }
         }
 
-        
+
     }
 }

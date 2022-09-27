@@ -66,11 +66,14 @@
                   Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Резултат">
-                    <GridViewColumn DisplayMemberBinding="{Binding CategoryOfTickets.TicketType}"
+                    <GridViewColumn DisplayMemberBinding="{Binding TicketType}"
                                     Header="Вид на билета" Width="140"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding NumOfTickets}"  Header="Брой билети" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding NumOfTickets}"  
+                                    Header="Брой билети" Width="100"/>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding CategoryOfTickets.price}" Header="Единична цена" Width="110"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding price}"
+                                    Header="Единична цена" Width="110"/>
+                   
                 </GridView>
             </ListView.View>
         </ListView>
@@ -90,7 +93,7 @@
             DisplayMemberPath="TicketType" 
             SelectedItem="{Binding CategoryOfTickets}"
             SelectedValuePath="TicketType"
-            SelectedValue="{Binding TicketType, Mode=TwoWay}" 
+            SelectedValue="{Binding CategoryOfTickets.TicketType, Mode=TwoWay,UpdateSourceTrigger=Default}" 
             Width="200" 
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
@@ -108,7 +111,7 @@
                   VerticalAlignment="Top"
                   FontWeight="Bold" 
                   FontSize="16">
-            <TextBox Text="{Binding NumOfTickets}" HorizontalAlignment="Stretch" Margin="5,1,5,5"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="178" Height="27"/>
+            <TextBox Text="{Binding CategoryOfTickets.NumOfTickets}" HorizontalAlignment="Stretch" Margin="5,1,5,5"  TextWrapping="Wrap" VerticalAlignment="Stretch" Width="178" Height="27"/>
         </GroupBox>
 
         <TextBlock

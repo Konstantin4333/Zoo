@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Create : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -36,6 +36,7 @@
                     {
                         IdOfCategoryTicket = c.Int(nullable: false, identity: true),
                         TicketType = c.String(),
+                        NumOfTickets = c.Int(nullable: false),
                         price = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.IdOfCategoryTicket);
@@ -64,19 +65,6 @@
                 .PrimaryKey(t => t.IdTypeOfEvent);
             
             CreateTable(
-                "dbo.Tickets",
-                c => new
-                    {
-                        IdOfTicket = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        NumOfTickets = c.Int(nullable: false),
-                        IdOfCategoryTicket = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.IdOfTicket)
-                .ForeignKey("dbo.CategoryOfTickets", t => t.IdOfCategoryTicket, cascadeDelete: true)
-                .Index(t => t.IdOfCategoryTicket);
-            
-            CreateTable(
                 "dbo.Users",
                 c => new
                     {
@@ -92,31 +80,23 @@
                     {
                         IdOrder = c.Int(nullable: false, identity: true),
                         IdUser = c.Int(nullable: false),
-                        IdOfTicket = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.IdOrder)
-                .ForeignKey("dbo.Tickets", t => t.IdOfTicket, cascadeDelete: true)
                 .ForeignKey("dbo.Users", t => t.IdUser, cascadeDelete: true)
-                .Index(t => t.IdUser)
-                .Index(t => t.IdOfTicket);
+                .Index(t => t.IdUser);
             
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.UserOrders", "IdUser", "dbo.Users");
-            DropForeignKey("dbo.UserOrders", "IdOfTicket", "dbo.Tickets");
-            DropForeignKey("dbo.Tickets", "IdOfCategoryTicket", "dbo.CategoryOfTickets");
             DropForeignKey("dbo.Events", "IdTypeOfEvent", "dbo.EventTypes");
             DropForeignKey("dbo.Animals", "AnimalCategoryID", "dbo.CategoryOfAnimals");
-            DropIndex("dbo.UserOrders", new[] { "IdOfTicket" });
             DropIndex("dbo.UserOrders", new[] { "IdUser" });
-            DropIndex("dbo.Tickets", new[] { "IdOfCategoryTicket" });
             DropIndex("dbo.Events", new[] { "IdTypeOfEvent" });
             DropIndex("dbo.Animals", new[] { "AnimalCategoryID" });
             DropTable("dbo.UserOrders");
             DropTable("dbo.Users");
-            DropTable("dbo.Tickets");
             DropTable("dbo.EventTypes");
             DropTable("dbo.Events");
             DropTable("dbo.CategoryOfTickets");

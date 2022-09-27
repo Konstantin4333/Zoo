@@ -15,10 +15,8 @@ namespace ZooProject.Model
         public int IdUser { get; set; }
         public User User { get; set; }
         // table Ticket
-        [ForeignKey("Tickets")]
-
-        public int IdOfTicket { get; set; }
-        public virtual Tickets Tickets { get; set; }
+       
+        //public virtual Tickets Tickets { get; set; }
 
 
 

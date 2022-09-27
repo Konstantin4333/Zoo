@@ -7,9 +7,9 @@ using System.Data;
 
 using ZooProject.Model;
 using ZooProject.View;
-using ZooProject.Data;
 using ZooProject.Commands;
 using Prism.Commands;
+using ZooProject.Data;
 
 namespace ZooProject.View_Models
 {

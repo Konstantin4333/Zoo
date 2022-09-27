@@ -13,6 +13,8 @@
     <None Remove="Pictures\Creative-Tail-Animal-dog.svg.png" />
     <None Remove="Pictures\divakotka.jpg" />
     <None Remove="Pictures\events.png" />
+    <None Remove="Pictures\gushter.jfif" />
+    <None Remove="Pictures\kostenurka.jpg" />
     <None Remove="Pictures\LoginIcon.jpg" />
     <None Remove="Pictures\MainPicture.png" />
     <None Remove="Pictures\orel.jpg" />
@@ -44,18 +46,32 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pictures\Creative-Tail-Animal-dog.svg.png" />
-    <Resource Include="Pictures\divakotka.jpg" />
+    <EmbeddedResource Include="Pictures\divakotka.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pictures\gushter.jfif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pictures\kostenurka.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Resource Include="Pictures\events.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pictures\LoginIcon.jpg" />
     <Resource Include="Pictures\MainPicture.png" />
-    <Resource Include="Pictures\orel.jpg" />
+    <EmbeddedResource Include="Pictures\orel.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Resource Include="Pictures\tickets.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\usoinica.jpg" />
-    <Resource Include="Pictures\Слон.jfif" />
+    <EmbeddedResource Include="Pictures\usoinica.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pictures\Слон.jfif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

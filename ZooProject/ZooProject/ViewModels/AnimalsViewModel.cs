@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ZooProject.Data;
-using ZooProject.Interface;
 using ZooProject.Model;
 using ZooProject.Service;
 
@@ -17,17 +16,25 @@ namespace ZooProject.View_Models
     {
         public AnimalsViewModel()
         {
-           // dataBaseService.FillDatabase();
-           FillCatAnimalChoices();
+
+            //dataBaseService.FillCatAnimalChoices();
+            // Fill Animal Category to DataBase
+            //dataBaseService.FillCatAnimalChoices();
+          //  dataBaseService.FillDatabase();
         }
-        #region Fields
-        DataBaseService dataBaseService = new DataBaseService();
-        protected ZooDataContext dBContext = new ZooDataContext();
+
+
+       // DataBaseService dataBaseService = new DataBaseService();
+       
         protected List<CategoryOfAnimal> categoryOfAnimalChoices = new List<CategoryOfAnimal>();
         protected List<Animals> animalsChoices = new List<Animals>();
         protected List<Animals> showAnimals;
         protected CategoryOfAnimal _catAnim;
         protected Animals _animal;
+
+
+        #region Fields
+
         private ICommand search;
         #endregion
         #region Properties
@@ -39,7 +46,7 @@ namespace ZooProject.View_Models
               
                 _catAnim = value;
                 SAnimal = null;
-             //   OnPropertyChanged("CatAnim");
+                 OnPropertyChanged("CatAnim");
                  FillAnimalChoices();
                 AnimalsChoices = null;
             }
@@ -71,7 +78,7 @@ namespace ZooProject.View_Models
                     OnPropertyChanged("CategoryOfAnimalChoices");
 
 
-                    FillAnimalChoices();
+                   FillAnimalChoices();
                 }
             }
         }
@@ -110,7 +117,7 @@ namespace ZooProject.View_Models
             {
                 return search ?? (search = new DelegateCommand(() =>
                 {
-                 FillAnimalChoices();
+                   // dataBaseService.FillAnimalChoices();
                 }));
             }
         }
@@ -123,9 +130,10 @@ namespace ZooProject.View_Models
         #region FillFromDataBase
         public void FillCatAnimalChoices()
         {
-            categoryOfAnimalChoices = dBContext.categoryOfAnimal
+            CategoryOfAnimalChoices = dBContext.categoryOfAnimal
             .Select(catAnim => catAnim).ToList();
         }
+        private ZooDataContext dBContext = new ZooDataContext();
         public void FillAnimalChoices()
         {
 
@@ -136,7 +144,7 @@ namespace ZooProject.View_Models
             }
             else
             {
-                animalsChoices = dBContext.animals
+                AnimalsChoices = dBContext.animals
             .Select(anim => anim).ToList();
             }
 
@@ -148,16 +156,18 @@ namespace ZooProject.View_Models
 
             if (CatAnim != null)
             {
-                animalsChoices = dBContext.animals.Where(Anim => Anim.AnimalCategoryID == SAnimal.AnimalCategoryID)
+                AnimalsChoices = dBContext.animals.Where(Anim => Anim.AnimalCategoryID == SAnimal.AnimalCategoryID)
            .Select(animcat => animcat).ToList();
             }
             else
             {
-                animalsChoices = dBContext.animals
+                AnimalsChoices = dBContext.animals
             .Select(Anim => Anim).ToList();
             }
 
         }
+
         #endregion
+
     }
 }
