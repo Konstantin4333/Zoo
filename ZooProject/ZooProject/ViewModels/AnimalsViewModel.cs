@@ -20,7 +20,8 @@ namespace ZooProject.View_Models
             //dataBaseService.FillCatAnimalChoices();
             // Fill Animal Category to DataBase
             //dataBaseService.FillCatAnimalChoices();
-          //  dataBaseService.FillDatabase();
+            //  dataBaseService.FillDatabase();
+            FillCatAnimalChoices();
         }
 
 
@@ -46,7 +47,7 @@ namespace ZooProject.View_Models
               
                 _catAnim = value;
                 SAnimal = null;
-                 OnPropertyChanged("CatAnim");
+                 OnPropertyChanged(nameof(CatAnim));
                  FillAnimalChoices();
                 AnimalsChoices = null;
             }
@@ -58,7 +59,7 @@ namespace ZooProject.View_Models
             {
                 _animal = value;
 
-                OnPropertyChanged("SAnimal");
+                OnPropertyChanged(nameof(SAnimal));
                 Console.WriteLine();
             }
         }
@@ -75,10 +76,9 @@ namespace ZooProject.View_Models
                 if (categoryOfAnimalChoices != value)
                 {
                     categoryOfAnimalChoices = value;
-                    OnPropertyChanged("CategoryOfAnimalChoices");
-
-
-                   FillAnimalChoices();
+                    OnPropertyChanged(nameof(CategoryOfAnimalChoices));
+                    FillAnimalChoices();
+;
                 }
             }
         }
@@ -91,7 +91,7 @@ namespace ZooProject.View_Models
                 if (animalsChoices != value)
                 {
                     animalsChoices = value;
-                    OnPropertyChanged("AnimalsChoices");
+                    OnPropertyChanged(nameof(AnimalsChoices));
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace ZooProject.View_Models
             set
             {
                 showAnimals = value;
-                OnPropertyChanged("Animals");
+                OnPropertyChanged(nameof(Animals));
             }
         }
         #endregion
@@ -117,7 +117,7 @@ namespace ZooProject.View_Models
             {
                 return search ?? (search = new DelegateCommand(() =>
                 {
-                   // dataBaseService.FillAnimalChoices();
+                   FillAnimalChoices();
                 }));
             }
         }

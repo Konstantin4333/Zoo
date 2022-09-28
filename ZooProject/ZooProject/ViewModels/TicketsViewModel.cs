@@ -20,6 +20,7 @@ namespace ZooProject.View_Models
             FillCategoryOfTicketsChoices();
 
             ticketsList = new List<CategoryOfTickets>();
+            
         }
 
         public ZooDataContext dBContext = new ZooDataContext();
@@ -33,13 +34,28 @@ namespace ZooProject.View_Models
         private ICommand buy;
         private List<CategoryOfTickets> ticketsList;
         private double finalPrice;
+
+
+        // PRICE,  View ne e dovurshen
+
+
+       /* private CategoryOfTickets price;
+
+        public CategoryOfTickets Price
+        {
+            get { return price; }
+            set { price = value;
+                
+                OnPropertyChanged(nameof(Price));
+            }
+        }*/
         public double FinalPrice
         {
             get { return finalPrice; }
             set
             {
                 finalPrice = value;
-                OnPropertyChanged("FinalPrice");
+                OnPropertyChanged(nameof(FinalPrice));
             }
         }
         public int NumOfTickets
@@ -49,7 +65,7 @@ namespace ZooProject.View_Models
             {
                 numOfTickets = value;
 
-                OnPropertyChanged("NumOfTickets");
+                OnPropertyChanged(nameof(NumOfTickets));
 
             }
         }
@@ -59,7 +75,7 @@ namespace ZooProject.View_Models
             set
             {
                 addedTickets = value;
-                OnPropertyChanged("AddedTickets");
+                OnPropertyChanged(nameof(AddedTickets));
             }
         }
 
@@ -70,7 +86,7 @@ namespace ZooProject.View_Models
             {
                 numOfTickets = (int)value;
 
-                OnPropertyChanged("NumOfTickets");
+                OnPropertyChanged(nameof(MidPrice));
 
             }
         }
@@ -96,7 +112,7 @@ namespace ZooProject.View_Models
             {
                 _ticket = value;
 
-                OnPropertyChanged("Ticket");
+                OnPropertyChanged(nameof(Ticket));
 
             }
         }
@@ -139,8 +155,8 @@ namespace ZooProject.View_Models
             set
             {
                 _categoryOfTickets = value;
-
-                OnPropertyChanged("CategoryOfTickets");
+                
+                OnPropertyChanged(nameof(CategoryOfTickets));
 
             }
         }
@@ -161,7 +177,7 @@ namespace ZooProject.View_Models
                 if (categoryOfTicketsChoices != value)
                 {
                     categoryOfTicketsChoices = value;
-                    OnPropertyChanged("CategoryOfTicketsChoices");
+                    OnPropertyChanged(nameof(CategoryOfTicketsChoices));
                 }
             }
         }

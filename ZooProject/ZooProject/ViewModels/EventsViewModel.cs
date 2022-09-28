@@ -28,7 +28,7 @@ namespace ZooProject.View_Models
             {
                 _eventType = value;
                 EventsChoices = null;
-                OnPropertyChanged("EventType");
+                OnPropertyChanged(nameof(EventType));
 
             }
         }
@@ -40,7 +40,7 @@ namespace ZooProject.View_Models
             {
                 _events = value;
 
-                OnPropertyChanged("Events");
+                OnPropertyChanged(nameof(Events));
 
             }
         }
@@ -53,7 +53,7 @@ namespace ZooProject.View_Models
                 _date = value;
                 EventType = null;
                 EventsChoices = null;
-                OnPropertyChanged("DDate");
+                OnPropertyChanged(nameof(DDate));
 
             }
         }
@@ -109,7 +109,7 @@ namespace ZooProject.View_Models
                 if (eventTypeChoices != value)
                 {
                     eventTypeChoices = value;
-                    OnPropertyChanged("EventChoices");
+                    OnPropertyChanged(nameof(EventChoices));
                 }
             }
         }
@@ -123,7 +123,7 @@ namespace ZooProject.View_Models
                 {
                     eventss = value;
 
-                    OnPropertyChanged("EventsChoices");
+                    OnPropertyChanged(nameof(EventsChoices));
                 }
             }
         }

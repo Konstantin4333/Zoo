@@ -21,6 +21,7 @@ namespace ZooProject.View
         public MainMenuWindow()
         {
             InitializeComponent();
+            Main.Content = new AnimalsPage();
         }
 
        private void btnAnimal_Click(object sender, RoutedEventArgs e)
