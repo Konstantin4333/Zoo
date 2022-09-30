@@ -111,6 +111,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="WrapModel\" />
     <Folder Include="Styles\" />
   </ItemGroup>
 

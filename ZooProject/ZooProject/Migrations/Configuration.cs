@@ -20,13 +20,13 @@
         {
 
             context.categoryOfAnimal.AddOrUpdate(x => x.IdOfCategory,
-                new Model.CategoryOfAnimal() { IdOfCategory = 1, Name = "Бозайник"},
-                 new Model.CategoryOfAnimal() { IdOfCategory = 2, Name = "Влечуго"},
-                  new Model.CategoryOfAnimal() { IdOfCategory = 3, Name = "Земноводно"},
-                   new Model.CategoryOfAnimal() { IdOfCategory = 4, Name = "Птици"}
+                new Model.CategoryOfAnimal() { IdOfCategory = 1, Name = "Бозайник" },
+                 new Model.CategoryOfAnimal() { IdOfCategory = 2, Name = "Влечуго" },
+                  new Model.CategoryOfAnimal() { IdOfCategory = 3, Name = "Земноводно" },
+                   new Model.CategoryOfAnimal() { IdOfCategory = 4, Name = "Птици" }
                 );
 
-            
+
 
             context.animals.AddOrUpdate(x => x.IdAnimal,
                 new Model.Animals()
@@ -68,14 +68,14 @@
 
                       },
                     new Model.Animals()
-                      {
-                          IdAnimal = 5,
-                          Name = "Гущер",
-                          Description = "Гущерите са прекрасни.",
-                          AnimalImage = File.ReadAllBytes(@"Pictures/gushter.jfif"),
-                          AnimalCategoryID = 3,
+                    {
+                        IdAnimal = 5,
+                        Name = "Гущер",
+                        Description = "Гущерите са прекрасни.",
+                        AnimalImage = File.ReadAllBytes(@"Pictures/gushter.jfif"),
+                        AnimalCategoryID = 3,
 
-                      }
+                    }
 
                 );
             //   context.animals.RemoveRange();
@@ -97,72 +97,20 @@
                 new Model.EventType() { IdTypeOfEvent = 2, Type = "Обеден" },
                 new Model.EventType() { IdTypeOfEvent = 3, Type = "Вечерен" }
                 );
-            context.events.AddOrUpdate(x => x.IdTypeOfEvent,
-                new Model.Events()
-                {
-                    IdTypeOfEvent = 1,
-                    Date = DateTime.Today,
-                    Name = "Слонски прояви",
-                    Description = "Наблудение над слонските действия",
-                },
-                new Model.Events()
-                {
-                    IdTypeOfEvent = 1,
-                    Date = new DateTime(2022,9,30),
-                    Name = "Слонски прояви",
-                    Description = "Наблудение над слонските действия",
-                },
-                new Model.Events()
-                {
-                    IdTypeOfEvent = 1,
-                    Date = new DateTime(2022, 10, 1),
-                    Name = "Слонски прояви",
-                    Description = "Наблудение над слонските действия",
-                },
-                new Model.Events()
-                {
-                    IdTypeOfEvent = 2,
-                    Date = new DateTime(2022, 10, 1),
-                    Name = "Змийски прояви",
-                    Description = "Наблудение на змията в средата си как ловува",
-                },
-                new Model.Events()
-                {
-                    IdTypeOfEvent = 2,
-                    Date = DateTime.Today,
-                    Name = "Костенурски развлечения",
-                    Description = "По всяко време може да се наблюдава, действията на костенурката",
-                },
-                new Model.Events()
-                {
-                    IdTypeOfEvent = 2,
-                    Date = DateTime.Today,
-                    Name = "Орела Кирчо",
-                    Description = "По всяко време може да се наблюдава Кирчо орелчето",
-                },
-                new Model.Events()
-                {
-                    IdTypeOfEvent = 3,
-                    Date = new DateTime(2022, 10, 1),
-                    Name = "Слонска баня",
-                    Description = "Вечерта може да се наблудава как слоните се къпят",
-                    
-                }
-                
-                );
+           
             context.categoryOfAnimal.AddOrUpdate(x => x.IdOfCategory,
             new Model.CategoryOfAnimal() { IsDeleted = false });
             context.categorryOfTickets.AddOrUpdate(x => x.IdOfCategoryTicket,
             new Model.CategoryOfTickets() { IsDeleted = false });
-            context.animals.AddOrUpdate(x=>x.AnimalCategoryID,
-                new Model.Animals() { IsDeleted= false });
+            context.animals.AddOrUpdate(x => x.AnimalCategoryID,
+                new Model.Animals() { IsDeleted = false });
             context.eventType.AddOrUpdate(x => x.IdTypeOfEvent,
                 new Model.EventType() { IsDeleted = false });
             context.events.AddOrUpdate(x => x.IdOfEvent,
                 new Model.Events() { IsDeleted = false });
             context.user.AddOrUpdate(x => x.IdUser,
                 new Model.User() { IsDeleted = false });
-            
+
 
         }
     }

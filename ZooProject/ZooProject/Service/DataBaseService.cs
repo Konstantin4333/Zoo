@@ -22,6 +22,7 @@ namespace ZooProject.Service
 
 
         AnimalsViewModel animalsViewModel = new AnimalsViewModel();
+      //  DataBaseServicee.Animals animals = new DataBaseServicee.Animals();
       /*  public  void FillDatabase()
         {
               
