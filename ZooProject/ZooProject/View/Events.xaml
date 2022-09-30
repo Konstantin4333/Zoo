@@ -96,11 +96,11 @@
 
                 <ListView
                     Width="auto"
-                    Height="auto"
-                    Margin="20,30,0,100"
+                    Height="100"
+                    Margin="20,20,0,100"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    ItemsSource="{Binding Path=EventsChoices}"
+                    ItemsSource="{Binding Path=EventsChoices, Mode=TwoWay}"
                     SelectedValue="{Binding Events}">
                     <ListView.View>
                         <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Searched Parts">
@@ -121,7 +121,7 @@
                 <GroupBox
                     Width="180"
                     Height="173"
-                    Margin="100,40,0,0"
+                    Margin="100,10,0,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     BorderBrush="#FFE0ECF3"
@@ -181,17 +181,7 @@
                     FontSize="14"
                     FontWeight="Bold" />
 
-                <Button
-                    Width="120"
-                    Height="40"
-                    Margin="30,0,0,0"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Command="{Binding Search}"
-                    Content="Търси"
-                    FontSize="14"
-                    FontWeight="Bold" />
-
+                
             </StackPanel>
         </StackPanel>
 

@@ -11,8 +11,8 @@ namespace ZooProject.Model
         public int IdTypeOfEvent { get; set; }
 
         public string Type { get; set; }
-      
-        
+        public bool IsDeleted { get; set; }
+
 
     }
 }

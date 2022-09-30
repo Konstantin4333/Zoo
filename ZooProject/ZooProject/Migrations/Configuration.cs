@@ -20,13 +20,13 @@
         {
 
             context.categoryOfAnimal.AddOrUpdate(x => x.IdOfCategory,
-                new Model.CategoryOfAnimal() { IdOfCategory = 1, Name = "Бозайник" },
-                 new Model.CategoryOfAnimal() { IdOfCategory = 2, Name = "Влечуго" },
-                  new Model.CategoryOfAnimal() { IdOfCategory = 3, Name = "Земноводно" },
-                   new Model.CategoryOfAnimal() { IdOfCategory = 4, Name = "Птици" }
+                new Model.CategoryOfAnimal() { IdOfCategory = 1, Name = "Бозайник"},
+                 new Model.CategoryOfAnimal() { IdOfCategory = 2, Name = "Влечуго"},
+                  new Model.CategoryOfAnimal() { IdOfCategory = 3, Name = "Земноводно"},
+                   new Model.CategoryOfAnimal() { IdOfCategory = 4, Name = "Птици"}
                 );
 
-
+            
 
             context.animals.AddOrUpdate(x => x.IdAnimal,
                 new Model.Animals()
@@ -146,8 +146,24 @@
                     Date = new DateTime(2022, 10, 1),
                     Name = "Слонска баня",
                     Description = "Вечерта може да се наблудава как слоните се къпят",
+                    
                 }
+                
                 );
+            context.categoryOfAnimal.AddOrUpdate(x => x.IdOfCategory,
+            new Model.CategoryOfAnimal() { IsDeleted = false });
+            context.categorryOfTickets.AddOrUpdate(x => x.IdOfCategoryTicket,
+            new Model.CategoryOfTickets() { IsDeleted = false });
+            context.animals.AddOrUpdate(x=>x.AnimalCategoryID,
+                new Model.Animals() { IsDeleted= false });
+            context.eventType.AddOrUpdate(x => x.IdTypeOfEvent,
+                new Model.EventType() { IsDeleted = false });
+            context.events.AddOrUpdate(x => x.IdOfEvent,
+                new Model.Events() { IsDeleted = false });
+            context.user.AddOrUpdate(x => x.IdUser,
+                new Model.User() { IsDeleted = false });
+            
+
         }
     }
 }

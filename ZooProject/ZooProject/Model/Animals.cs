@@ -13,6 +13,7 @@ namespace ZooProject.Model
         public string Name { get; set; }
         public string Description { get; set; }
         public byte[] AnimalImage { get; set; }
+        public bool IsDeleted { get; set; }
         //
         [ForeignKey("CategoryOfAnimal")]
         public int AnimalCategoryID { get; set; }
@@ -23,7 +24,7 @@ namespace ZooProject.Model
         {
 
         }
-        public Animals(string name, string description, byte[] picture,int category)
+        public Animals(string name, string description, byte[] picture, int category)
         {
 
             Name = name;
@@ -33,7 +34,17 @@ namespace ZooProject.Model
 
         }
 
+        public Animals(int id ,bool isDeleted)
+        {
+            IdAnimal = id;
+            IsDeleted = isDeleted;
+        }
 
+        public Animals( bool isDeleted)
+        {
+        
+            IsDeleted = isDeleted;
+        }
 
     }
 

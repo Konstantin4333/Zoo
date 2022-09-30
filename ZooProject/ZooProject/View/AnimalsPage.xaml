@@ -81,6 +81,7 @@
                     ItemsSource="{Binding AnimalsChoices}"
                     SelectedItem="{Binding SAnimal}"
                     SelectedValue="{Binding Name, Mode=TwoWay}"
+                    
                     SelectedValuePath="Name" />
             </GroupBox>
 

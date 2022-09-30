@@ -12,6 +12,7 @@ namespace ZooProject.Model
         public string TicketType { get; set; }
         public int NumOfTickets { get; set; }
         public double price { get; set; }
+        public bool IsDeleted { get; set; }
 
     }
 }

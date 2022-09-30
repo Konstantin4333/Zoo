@@ -14,8 +14,9 @@ namespace ZooProject.Model
         [ForeignKey("User")]
         public int IdUser { get; set; }
         public User User { get; set; }
+        public bool IsDeleted { get; set; }
         // table Ticket
-       
+
         //public virtual Tickets Tickets { get; set; }
 
 

@@ -22,23 +22,40 @@ namespace ZooProject.View_Models
             //dataBaseService.FillCatAnimalChoices();
             //  dataBaseService.FillDatabase();
             FillCatAnimalChoices();
+            FillAnimalChoices();
         }
 
 
-       // DataBaseService dataBaseService = new DataBaseService();
-       
-        protected List<CategoryOfAnimal> categoryOfAnimalChoices = new List<CategoryOfAnimal>();
-        protected List<Animals> animalsChoices = new List<Animals>();
-        protected List<Animals> showAnimals;
-        protected CategoryOfAnimal _catAnim;
-        protected Animals _animal;
+        // DataBaseService dataBaseService = new DataBaseService();
+
+
+
 
 
         #region Fields
-
+        private List<CategoryOfAnimal> categoryOfAnimalChoices = new List<CategoryOfAnimal>();
+        private List<Animals> animalsChoices = new List<Animals>();
+        private List<Animals> showAnimals;
+        private CategoryOfAnimal _catAnim;
+        private Animals _animal;
+        private Animals isDeleted;
+        private bool deleted;
         private ICommand search;
         #endregion
         #region Properties
+        public Animals IsDeleted
+        {
+            get { return isDeleted; }
+            set
+            {
+
+                isDeleted = value;
+                //SAnimal = null;
+                OnPropertyChanged(nameof(IsDeleted));
+                FillAnimalChoices();
+
+            }
+        }
         public CategoryOfAnimal CatAnim
         {
             get { return _catAnim; }
@@ -46,10 +63,10 @@ namespace ZooProject.View_Models
             {
               
                 _catAnim = value;
-                SAnimal = null;
+                //SAnimal = null;
                  OnPropertyChanged(nameof(CatAnim));
                  FillAnimalChoices();
-                AnimalsChoices = null;
+                
             }
         }
         public Animals SAnimal
@@ -78,7 +95,8 @@ namespace ZooProject.View_Models
                     categoryOfAnimalChoices = value;
                     OnPropertyChanged(nameof(CategoryOfAnimalChoices));
                     FillAnimalChoices();
-;
+                   
+                    ;
                 }
             }
         }
@@ -110,14 +128,17 @@ namespace ZooProject.View_Models
         }
         #endregion
         #region Commands
-
+        // testtttttt PROVERI
         public ICommand Search
         {
             get
             {
                 return search ?? (search = new DelegateCommand(() =>
                 {
-                   FillAnimalChoices();
+                    
+                    Animals animal1 = new Animals(true);
+                    dBContext.animals.Add(animal1);
+                    dBContext.SaveChanges();
                 }));
             }
         }
@@ -136,11 +157,16 @@ namespace ZooProject.View_Models
         private ZooDataContext dBContext = new ZooDataContext();
         public void FillAnimalChoices()
         {
-
-            if (CatAnim != null)
+            deleted = false;
+            
+            if (CatAnim != null )
             {
                 AnimalsChoices = dBContext.animals.Where(anim => anim.AnimalCategoryID == CatAnim.IdOfCategory)
            .Select(anim => anim).ToList();
+           /* }else if(CatAnim != null && deleted.Equals("true"))
+            {
+                AnimalsChoices = dBContext.animals.Where(anim => anim.AnimalCategoryID == CatAnim.IdOfCategory &&  IsDeleted.IsDeleted == false)
+          .Select(anim => anim).ToList();*/
             }
             else
             {
@@ -154,7 +180,7 @@ namespace ZooProject.View_Models
         {
 
 
-            if (CatAnim != null)
+            if (CatAnim != null && isDeleted.Equals("false"))
             {
                 AnimalsChoices = dBContext.animals.Where(Anim => Anim.AnimalCategoryID == SAnimal.AnimalCategoryID)
            .Select(animcat => animcat).ToList();

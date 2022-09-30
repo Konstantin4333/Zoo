@@ -27,7 +27,8 @@ namespace ZooProject.View_Models
             set
             {
                 _eventType = value;
-                EventsChoices = null;
+               
+                FillEvents();
                 OnPropertyChanged(nameof(EventType));
 
             }
@@ -51,8 +52,8 @@ namespace ZooProject.View_Models
             set
             {
                 _date = value;
-                EventType = null;
-                EventsChoices = null;
+                
+                FillEvents();
                 OnPropertyChanged(nameof(DDate));
 
             }
@@ -87,19 +88,7 @@ namespace ZooProject.View_Models
                  .Select(a => a).ToList();
             }
         }
-        /*public void FillEvents()
-        {
-            if (EventType != null)
-            {
-                EventsChoices = dBContext.events.Where(a => a.IdTypeOfEvent == EventType.IdTypeOfEvent)
-            .Select(w => w).ToList();
-            }else
-            {
-                EventsChoices = dBContext.events
-                 .Select(w => w).ToList();
-            }
-        }
-*/
+       
         public List<EventType> EventChoices
         {
             get { return eventTypeChoices; }
@@ -132,21 +121,7 @@ namespace ZooProject.View_Models
         private DelegateCommand search;
 
 
-        public ICommand Search
-        {
-            get
-            {
-                return search ?? (search = new DelegateCommand(() =>
-                {
-
-
-                    FillEvents();
-
-
-
-                }));
-            }
-        }
+        
 
         private DelegateCommand clearAll;
 
@@ -160,9 +135,8 @@ namespace ZooProject.View_Models
 
 
                     EventType = null;
-                    EventsChoices = null;
                     DDate = null;
-
+                    EventsChoices = null;
 
 
                 }));
@@ -170,10 +144,9 @@ namespace ZooProject.View_Models
         }
         public EventsViewModel()
         {
-            //  ViewModelBase viewModelBase;
-
+            
             FillEventsCategoryChoices();
-            //  FillEvents();
+
         }
 
     }
