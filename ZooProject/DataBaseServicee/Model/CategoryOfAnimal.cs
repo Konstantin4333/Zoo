@@ -2,11 +2,13 @@
 
 namespace DataBaseServicee.Model
 {
-    internal class CategoryOfAnimal
+    public class CategoryOfAnimal
     {
         [Key]
         public int IdOfCategory { get; set; }
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
+            
+        
     }
 }

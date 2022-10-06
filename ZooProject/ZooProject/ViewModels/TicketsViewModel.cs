@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
-using ZooProject.Data;
-using ZooProject.Model;
+using DataBaseServicee.DataContext;
+using DataBaseServicee.Model;
 
 namespace ZooProject.View_Models
 {
@@ -16,39 +16,40 @@ namespace ZooProject.View_Models
         public TicketsViewModel()
         {
 
-            AddedTickets = new ObservableCollection<CategoryOfTickets>();
+            AddedTickets = new List<CategoryOfTickets>();
             FillCategoryOfTicketsChoices();
 
             ticketsList = new List<CategoryOfTickets>();
-            
+
         }
 
         public ZooDataContext dBContext = new ZooDataContext();
         private List<CategoryOfTickets> categoryOfTicketsChoices = new List<CategoryOfTickets>();
         private List<string> test = new List<string>();
-        private int numOfTickets; //NumOfTickets
+        private int numOfTicketss; //NumOfTickets
         private int midPrice; //NumOfTickets
         private CategoryOfTickets _categoryOfTickets;
-        private ObservableCollection<CategoryOfTickets> addedTickets;
+        private List<CategoryOfTickets> addedTickets;
         private ICommand search;
         private ICommand buy;
         private List<CategoryOfTickets> ticketsList;
         private double finalPrice;
+        EventsViewModel eve = new EventsViewModel();
 
 
         // PRICE,  View ne e dovurshen
 
 
-       /* private CategoryOfTickets price;
+        /* private CategoryOfTickets price;
 
-        public CategoryOfTickets Price
-        {
-            get { return price; }
-            set { price = value;
-                
-                OnPropertyChanged(nameof(Price));
-            }
-        }*/
+         public CategoryOfTickets Price
+         {
+             get { return price; }
+             set { price = value;
+
+                 OnPropertyChanged(nameof(Price));
+             }
+         }*/
         public double FinalPrice
         {
             get { return finalPrice; }
@@ -56,20 +57,26 @@ namespace ZooProject.View_Models
             {
                 finalPrice = value;
                 OnPropertyChanged(nameof(FinalPrice));
+               
             }
         }
         public int NumOfTickets
         {
-            get { return numOfTickets; }
+            get { return numOfTicketss; }
             set
             {
-                numOfTickets = value;
+               
+                numOfTicketss = value;
 
+              // FinalPrice += CategoryOfTickets.price * CategoryOfTickets.NumOfTickets;
                 OnPropertyChanged(nameof(NumOfTickets));
+                
+                AddTicket();
+
 
             }
         }
-        public ObservableCollection<CategoryOfTickets> AddedTickets
+        public List<CategoryOfTickets> AddedTickets
         {
             get { return addedTickets; }
             set
@@ -84,7 +91,7 @@ namespace ZooProject.View_Models
             get { return midPrice; }
             set
             {
-                numOfTickets = (int)value;
+                numOfTicketss = (int)value;
 
                 OnPropertyChanged(nameof(MidPrice));
 
@@ -96,12 +103,12 @@ namespace ZooProject.View_Models
         {
             // Tickets ticket = new Tickets();
             // observalcollection
-            CategoryOfTickets = CategoryOfTickets;
-            NumOfTickets = NumOfTickets;
+           
 
             ticketsList.Add(CategoryOfTickets);
-            AddedTickets.Add(ticketsList.FirstOrDefault())/* = new List<CategoryOfTickets>(ticketsList)*/;
+            AddedTickets = new List<CategoryOfTickets>(ticketsList);
             FinalPrice += CategoryOfTickets.price * CategoryOfTickets.NumOfTickets;
+            
             // MidPrice = CategoryOfTickets.price * CategoryOfTickets.NumOfTickets;
         }
         private CategoryOfTickets _ticket;
@@ -137,7 +144,15 @@ namespace ZooProject.View_Models
                 return buy ?? (buy = new DelegateCommand(() =>
                 {
 
+                    List<CategoryOfTickets> tickets = new List<CategoryOfTickets>();
+
+                    tickets.Add(CategoryOfTickets);
+                    // dBContext.userOrder.Add(tickets);
+
+
                     MessageBox.Show("Вие успешно направихте поръчката. ");
+
+
                     NumOfTickets = 0;
                     AddedTickets = null;
                     FinalPrice = 0;
@@ -155,8 +170,9 @@ namespace ZooProject.View_Models
             set
             {
                 _categoryOfTickets = value;
-                
+
                 OnPropertyChanged(nameof(CategoryOfTickets));
+               
 
             }
         }

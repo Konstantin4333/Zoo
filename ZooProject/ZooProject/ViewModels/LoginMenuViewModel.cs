@@ -4,12 +4,11 @@ using System.Windows;
 using System.Windows.Input;
 using System.Linq;
 using System.Data;
-
-using ZooProject.Model;
 using ZooProject.View;
 using ZooProject.Commands;
 using Prism.Commands;
-using ZooProject.Data;
+using DataBaseServicee.Model;
+using DataBaseServicee.DataContext;
 
 namespace ZooProject.View_Models
 {
@@ -19,8 +18,8 @@ namespace ZooProject.View_Models
 
         public LoginMenuViewModel()
         {
-            //  ViewModelBase viewModelBase;
-            // FillUsers();
+            Password = "1";
+            Username = "1";
            
 
         }

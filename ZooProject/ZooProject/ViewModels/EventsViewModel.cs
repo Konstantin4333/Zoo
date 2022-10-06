@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
-using ZooProject.Data;
-using ZooProject.Model;
+using DataBaseServicee.DataContext;
+
+using DataBaseServicee.Model;
 
 namespace ZooProject.View_Models
 {
@@ -13,21 +14,22 @@ namespace ZooProject.View_Models
     {
 
 
-
+        #region Fields
         public ZooDataContext dBContext = new ZooDataContext();
         private List<EventType> eventTypeChoices = new List<EventType>();
         private List<Events> eventss = new List<Events>();
-
         private EventType _eventType;
         private DateTime? _date = null;
         private Events _events;
+        #endregion
+        #region Properies & Lists
         public EventType EventType
         {
             get { return _eventType; }
             set
             {
                 _eventType = value;
-               
+
                 FillEvents();
                 OnPropertyChanged(nameof(EventType));
 
@@ -52,43 +54,12 @@ namespace ZooProject.View_Models
             set
             {
                 _date = value;
-                
+
                 FillEvents();
                 OnPropertyChanged(nameof(DDate));
 
             }
         }
-        public void FillEventsCategoryChoices()
-        {
-            eventTypeChoices = dBContext.eventType
-            .Select(catAnim => catAnim).ToList();
-        }
-        public void FillEvents()
-        {
-            if (EventType == null && DDate != null)
-            {
-
-                EventsChoices = dBContext.events.Where(a => a.Date == DDate)
-            .Select(a => a).ToList();
-
-            }
-            else if (EventType != null && DDate == null)
-            {
-                EventsChoices = dBContext.events.Where(a => a.IdTypeOfEvent == EventType.IdTypeOfEvent)
-            .Select(a => a).ToList();
-            }
-            else if (DDate != null && EventType != null)
-            {
-                EventsChoices = dBContext.events.Where(a => a.IdTypeOfEvent == EventType.IdTypeOfEvent && a.Date == DDate)
-            .Select(a => a).ToList();
-            }
-            else
-            {
-                EventsChoices = dBContext.events
-                 .Select(a => a).ToList();
-            }
-        }
-       
         public List<EventType> EventChoices
         {
             get { return eventTypeChoices; }
@@ -99,6 +70,7 @@ namespace ZooProject.View_Models
                 {
                     eventTypeChoices = value;
                     OnPropertyChanged(nameof(EventChoices));
+
                 }
             }
         }
@@ -117,12 +89,41 @@ namespace ZooProject.View_Models
             }
         }
 
+        #endregion
+        //OPRAVI GO
+        #region FILL FROM DATA 
+        public void FillEventsCategoryChoices()
+        {
+            eventTypeChoices = dBContext.eventType
+            .Select(catAnim => catAnim).ToList();
+        }
+        public void FillEvents()
+        {
+            if (EventType == null && DDate != null)
+            {
 
-        private DelegateCommand search;
+                EventsChoices = dBContext.events.Where(a => a.Date == DDate)
+            .Select(a => a).ToList();
 
-
-        
-
+            }
+            else if (EventType != null && DDate == null)
+            {
+                EventsChoices = dBContext.events.Where(a => a.Id == EventType.Id)
+            .Select(a => a).ToList();
+            }
+            else if (DDate != null && EventType != null)
+            {
+                EventsChoices = dBContext.events.Where(a => a.Id == EventType.Id && a.Date == DDate)
+            .Select(a => a).ToList();
+            }
+            else
+            {
+                EventsChoices = dBContext.events
+                 .Select(a => a).ToList();
+            }
+        }
+        #endregion
+        #region Commands
         private DelegateCommand clearAll;
 
 
@@ -142,11 +143,33 @@ namespace ZooProject.View_Models
                 }));
             }
         }
+
+
+
+
+        private DelegateCommand save;
+        public ICommand Save
+        {
+            get
+            {
+                return save ?? (save = new DelegateCommand(() =>
+                {
+                    List<Events> events = new List<Events>();
+
+                    events.Add(Events);
+
+
+                    /* events.Add(EventType);
+                     events.Add(DDate);*/
+
+
+                }));
+            }
+        }
+        #endregion
         public EventsViewModel()
         {
-            
             FillEventsCategoryChoices();
-
         }
 
     }

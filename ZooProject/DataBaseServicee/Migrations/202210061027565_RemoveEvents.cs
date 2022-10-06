@@ -1,9 +1,9 @@
-﻿namespace ZooProject.Migrations
+﻿namespace DataBaseServicee.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Creation : DbMigration
+    public partial class RemoveEvents : DbMigration
     {
         public override void Up()
         {

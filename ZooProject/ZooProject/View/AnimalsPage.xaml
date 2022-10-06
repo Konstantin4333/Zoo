@@ -61,9 +61,10 @@
                     VerticalAlignment="Top"
                     DisplayMemberPath="Name"
                     ItemsSource="{Binding CategoryOfAnimalChoices}"
-                    SelectedItem="{Binding CatAnim}"
-                    SelectedValue="{Binding Name, Mode=TwoWay}"
-                    SelectedValuePath="Name" />
+                    SelectedItem="{Binding CatAnim, Mode=TwoWay}"
+                    SelectedValue="{Binding CatAnim.Name, Mode=TwoWay, UpdateSourceTrigger=Default}"
+                    SelectedValuePath="Name" 
+                    />
             </GroupBox>
 
             <GroupBox
@@ -80,7 +81,7 @@
                     DisplayMemberPath="Name"
                     ItemsSource="{Binding AnimalsChoices}"
                     SelectedItem="{Binding SAnimal}"
-                    SelectedValue="{Binding Name, Mode=TwoWay}"
+                    SelectedValue="{Binding SAnimal.Name, Mode=TwoWay}"
                     
                     SelectedValuePath="Name" />
             </GroupBox>
@@ -93,15 +94,19 @@
             Grid.Column="1" Margin="30"
             >
 
-          
-                <Image
+            
+            <Image
                     Width="auto"
                     Height="auto"
                     Margin="10,30,10,10"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Source="{Binding Path=SAnimal.AnimalImage}" />
-            
+                    Source="{Binding Path=SAnimal.AnimalImage}" 
+                    RenderTransformOrigin="1,0"
+                     >
+                
+            </Image>
+
 
 
         </StackPanel>
@@ -147,15 +152,28 @@
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Bottom"
                     >
-        <Button Content="Търси"
+       
                
-                Command="{Binding Search}"
+                
+            <Button Content="Изтрий"
+                Margin="0,10,0,10"
+                Command="{Binding Delete}"
                 Width="100"
                 Height="30"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Right" 
                 FontWeight="Bold" 
                 FontSize="14" />
+            
+            <!--<Button Content="Запиши"
+               
+                Command="{Binding Save}"
+                Width="100"
+                Height="30"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right" 
+                FontWeight="Bold" 
+                FontSize="14" />-->
         </StackPanel>
         <!--
         <Button Content="Търси" Command="{Binding Search}"  Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataBaseServicee.Model
 {
-    internal class Events
+    public class Events
     {
         [Key]
         public int IdOfEvent { get; set; }

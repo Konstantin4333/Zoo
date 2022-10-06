@@ -2,7 +2,7 @@
 
 namespace DataBaseServicee.Model
 {
-    internal class CategoryOfTickets
+    public class CategoryOfTickets
     {
         [Key]
         public int IdOfCategoryTicket { get; set; }

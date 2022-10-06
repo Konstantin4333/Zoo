@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataBaseServicee.Model
 {
-    internal class Animals
+    public class Animals
     {
         [Key]
         public int IdAnimal { get; set; }

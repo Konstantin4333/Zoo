@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DataBaseServicee.Model
 {
-    internal class EventType
+    public class EventType
     {
         [Key]
         public int Id { get; set; }

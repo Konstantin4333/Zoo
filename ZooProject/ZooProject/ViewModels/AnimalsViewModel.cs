@@ -1,36 +1,17 @@
 ﻿using Prism.Commands;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Windows.Controls;
 using System.Windows.Input;
-using ZooProject.Data;
-using ZooProject.Model;
-using ZooProject.Service;
+using DataBaseServicee.DataContext;
+using DataBaseServicee.Model;
+using DataBaseServicee.FillFromData;
+
 
 namespace ZooProject.View_Models
 {
     class AnimalsViewModel : ViewModelBase
     {
-        public AnimalsViewModel()
-        {
-
-            //dataBaseService.FillCatAnimalChoices();
-            // Fill Animal Category to DataBase
-            //dataBaseService.FillCatAnimalChoices();
-            //  dataBaseService.FillDatabase();
-            FillCatAnimalChoices();
-            FillAnimalChoices();
-        }
-
-
-        // DataBaseService dataBaseService = new DataBaseService();
-
-
-
-
 
         #region Fields
         private List<CategoryOfAnimal> categoryOfAnimalChoices = new List<CategoryOfAnimal>();
@@ -40,9 +21,11 @@ namespace ZooProject.View_Models
         private Animals _animal;
         private Animals isDeleted;
         private bool deleted;
-        private ICommand search;
+        private ICommand delete;
+        private ICommand save;
+        // AnimalsViewModelFilter animalsViewModelFilter = new AnimalsViewModelFilter();
         #endregion
-        #region Properties
+        #region Properties & Lists
         public Animals IsDeleted
         {
             get { return isDeleted; }
@@ -52,7 +35,7 @@ namespace ZooProject.View_Models
                 isDeleted = value;
                 //SAnimal = null;
                 OnPropertyChanged(nameof(IsDeleted));
-                FillAnimalChoices();
+                FillFromData.FillAnimalChoices(CatAnim);
 
             }
         }
@@ -61,12 +44,14 @@ namespace ZooProject.View_Models
             get { return _catAnim; }
             set
             {
-              
+
                 _catAnim = value;
-                //SAnimal = null;
-                 OnPropertyChanged(nameof(CatAnim));
-                 FillAnimalChoices();
-                
+
+                OnPropertyChanged(nameof(CatAnim));
+                AnimalsChoices = FillFromData.FillAnimalChoices(CatAnim);
+                SAnimal = AnimalsChoices.First();
+
+
             }
         }
         public Animals SAnimal
@@ -75,9 +60,9 @@ namespace ZooProject.View_Models
             set
             {
                 _animal = value;
-
                 OnPropertyChanged(nameof(SAnimal));
                 Console.WriteLine();
+
             }
         }
 
@@ -94,8 +79,8 @@ namespace ZooProject.View_Models
                 {
                     categoryOfAnimalChoices = value;
                     OnPropertyChanged(nameof(CategoryOfAnimalChoices));
-                    FillAnimalChoices();
-                   
+                    FillFromData.FillAnimalChoices(CatAnim);
+
                     ;
                 }
             }
@@ -126,35 +111,48 @@ namespace ZooProject.View_Models
                 OnPropertyChanged(nameof(Animals));
             }
         }
+
         #endregion
         #region Commands
         // testtttttt PROVERI
-        public ICommand Search
+        /*public ICommand Delete
         {
             get
             {
-                return search ?? (search = new DelegateCommand(() =>
+                return delete ?? (delete = new DelegateCommand(() =>
                 {
-                    
-                    Animals animal1 = new Animals(true);
-                    dBContext.animals.Add(animal1);
+                    ZooDataContext dBContext = new ZooDataContext();
+                     CategoryOfAnimal test = CategoryOfAnimalChoices.;
+                    test.IsDeleted = true;
+                    int a = 1;
+                    dBContext.categoryOfAnimal.Add(test);
                     dBContext.SaveChanges();
                 }));
             }
-        }
-        /* public ICommand Search
-        {
-            get { return search ?? (search = new Command(p => true, p => FillAnimalChoices())); }
-
         }*/
+
+        public ICommand Save
+        {
+            get
+            {
+                return save ?? (save = new DelegateCommand(() =>
+                {
+
+                    Animals animal1 = new Animals(true);
+                    /* dBContext.animals.Add(animal1);
+                     dBContext.SaveChanges();*/
+                }));
+            }
+        }
+
         #endregion
         #region FillFromDataBase
-        public void FillCatAnimalChoices()
-        {
-            CategoryOfAnimalChoices = dBContext.categoryOfAnimal
-            .Select(catAnim => catAnim).ToList();
-        }
-        private ZooDataContext dBContext = new ZooDataContext();
+        /* public void FillCatAnimalChoices()
+         {
+             CategoryOfAnimalChoices = dBContext.categoryOfAnimal
+             .Select(catAnim => catAnim).ToList();
+         }*/
+        /*private ZooDataContext dBContext = new ZooDataContext();
         public void FillAnimalChoices()
         {
             deleted = false;
@@ -163,10 +161,10 @@ namespace ZooProject.View_Models
             {
                 AnimalsChoices = dBContext.animals.Where(anim => anim.AnimalCategoryID == CatAnim.IdOfCategory)
            .Select(anim => anim).ToList();
-           /* }else if(CatAnim != null && deleted.Equals("true"))
+           *//* }else if(CatAnim != null && deleted.Equals("true"))
             {
                 AnimalsChoices = dBContext.animals.Where(anim => anim.AnimalCategoryID == CatAnim.IdOfCategory &&  IsDeleted.IsDeleted == false)
-          .Select(anim => anim).ToList();*/
+          .Select(anim => anim).ToList();*//*
             }
             else
             {
@@ -191,9 +189,17 @@ namespace ZooProject.View_Models
             .Select(Anim => Anim).ToList();
             }
 
-        }
+        }*/
 
         #endregion
+        public AnimalsViewModel()
+        {
 
+            CategoryOfAnimalChoices = new List<CategoryOfAnimal>(FillFromData.FillCatAnimalChoices());
+            AnimalsChoices = new List<Animals>(FillFromData.FillAnimalChoices(CatAnim));
+            CatAnim = CategoryOfAnimalChoices[0];
+            SAnimal = AnimalsChoices.First();
+
+        }
     }
 }

@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ZooProject"
+                    xmlns:s="clr-namespace:ZooProject.View">
+
+    <Style x:Key="tbst" TargetType="TextBlock">
+        <Setter Property="Height" Value="12" />
+        
+    </Style>
+
+</ResourceDictionary>

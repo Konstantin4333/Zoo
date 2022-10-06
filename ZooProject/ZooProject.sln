@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZooProject", "ZooProject\ZooProject.csproj", "{D4CEC96E-8555-45F3-90E5-30F03CB1CE7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseServicee", "DataBaseServicee\DataBaseServicee.csproj", "{E94ECB73-B8E7-49A0-8D87-9F0137F6874B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseServicee", "DataBaseServicee\DataBaseServicee.csproj", "{E94ECB73-B8E7-49A0-8D87-9F0137F6874B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

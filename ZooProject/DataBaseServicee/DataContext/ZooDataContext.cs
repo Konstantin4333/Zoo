@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace DataBaseServicee.DataContext
 {
-    internal class ZooDataContext : DbContext
+    public class ZooDataContext : DbContext
     {
         public ZooDataContext() : base(Properties.Settings.Default.DbConnect)
         {

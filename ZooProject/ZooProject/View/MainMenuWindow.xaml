@@ -11,6 +11,9 @@
     Width="900px"
     Height="600px"
     Icon="/Pictures/Creative-Tail-Animal-dog.svg.png"
+    ResizeMode="CanMinimize"
+    WindowState="Normal"
+    
     mc:Ignorable="d">
 
 

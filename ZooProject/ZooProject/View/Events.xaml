@@ -96,12 +96,17 @@
 
                 <ListView
                     Width="auto"
-                    Height="100"
-                    Margin="20,20,0,100"
-                    HorizontalAlignment="Left"
+                    Height="120"
+                    Margin="20,10,0,100"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
+                    Background="White"
                     ItemsSource="{Binding Path=EventsChoices, Mode=TwoWay}"
-                    SelectedValue="{Binding Events}">
+                    SelectedValue="{Binding Events}"
+                    TextElement.FontSize="15"
+                    TextElement.FontWeight="Bold"
+                    TextElement.Foreground="Black"
+                    TextOptions.TextFormattingMode="Ideal">
                     <ListView.View>
                         <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Searched Parts">
                             <GridViewColumn
@@ -181,8 +186,19 @@
                     FontSize="14"
                     FontWeight="Bold" />
 
-                
+                <Button
+                    Width="178"
+                    Height="40"
+                    Margin="190,0,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Command="{Binding Save}"
+                    Content="Изчисти всички полета"
+                    FontSize="14"
+                    FontWeight="Bold" />
+
             </StackPanel>
+
         </StackPanel>
 
 

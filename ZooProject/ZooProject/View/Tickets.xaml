@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:v="clr-namespace:ZooProject"
     xmlns:z="clr-namespace:ZooProject.View_Models"
+    
     Title="Tickets"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -74,7 +75,7 @@
                         VerticalAlignment="Stretch"
                         Text="{Binding CategoryOfTickets.NumOfTickets}"
                         TextWrapping="Wrap">
-                        
+
                     </TextBox>
                 </GroupBox>
 
@@ -85,14 +86,17 @@
                     MaxWidth="200"
                     Margin="10,20,0,0"
                     HorizontalAlignment="Left"
-                    Background="#FFD6D6D6"
                     FontSize="16"
                     FontWeight="Bold"
-                    TextWrapping="Wrap" Width="200">
-
+                    
+                    TextWrapping="Wrap" Width="200" Background="#00000000">
+                       
                     <Run Text="Единична цена: " />
-                    <Run Text="{Binding Path=CategoryOfTickets.price, StringFormat='##.#'}" />
-                     <Run Text=" лв. " />
+                    <Run Text="{Binding Path=CategoryOfTickets.price, StringFormat='##.# лв.', UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="10" Color="Transparent" ShadowDepth="0" />
+                    </TextBlock.Effect>
+
                 </TextBlock>
 
 
@@ -102,19 +106,22 @@
                    TextWrapping="Wrap"
                    VerticalAlignment="Top"
                    Height="28"
-                   Width="151"
+                   Width="200"
                    FontSize="16"
                    FontWeight="Bold"
-                   Text="Крайна цена в лв:"
-                   Background="#FFD6D6D6">
+                   
+                   Background="Transparent">
                      <Run Text="Крайна цена: " />
-                    <Run Text="{Binding FinalPrice, StringFormat='#'}" />
-                     <Run Text=" лв. " />
+                    <Run Text="{Binding Path = FinalPrice, StringFormat='##.# лв.', UpdateSourceTrigger=LostFocus}" />
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="10" Color="Transparent" ShadowDepth="0" />
+                    </TextBlock.Effect>
+
                 </TextBlock>
 
             </StackPanel>
 
-            
+
         </Grid>
 
         <Grid Grid.Column="2">
@@ -124,19 +131,36 @@
             </Grid.RowDefinitions>
             <StackPanel>
                 <ListView ItemsSource="{Binding Path= AddedTickets}" 
-                    Height="150"
+                          Margin="20"
+                          Background="Transparent"
+                          TextElement.FontSize="15"
+                          TextElement.Foreground="Black"
+                            TextElement.FontWeight="Bold"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          TextOptions.TextFormattingMode="Ideal"
+                          
+                    Height="150" Width="auto"
                  >
+                    
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="30" />
+                        </Style>
+                        
+                    </ListView.ItemContainerStyle>
                     <ListView.View>
-                        <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Резултат">
+                        <GridView AllowsColumnReorder="true"  ColumnHeaderToolTip="Резултат">
                             <GridViewColumn DisplayMemberBinding="{Binding TicketType}"
                                     Header="Вид на билета" Width="140"/>
                             <GridViewColumn DisplayMemberBinding="{Binding NumOfTickets}"  
-                                    Header="Брой билети" Width="100"/>
+                                    Header="Брой билети" Width="110"/>
 
                             <GridViewColumn DisplayMemberBinding="{Binding price}"
-                                    Header="Единична цена" Width="110"/>
+                                    Header="Единична цена" Width="140"/>
 
                         </GridView>
+
                     </ListView.View>
                 </ListView>
 
@@ -155,7 +179,7 @@
                 
                 FontWeight="Bold"
                 FontSize="14" />
-                
+
                 <Button Command="{Binding Buy}"
                Margin="30,0,0,10"
                 Content="Купи" 
@@ -166,14 +190,14 @@
                 FontWeight="Bold"
                 FontSize="14" />
 
-                
+
 
             </StackPanel>
-            
-            
+
+
         </Grid>
-        
-        
+
+
 
 
         <!--<Button Command="{Binding Buy}" Content="Купи"   Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,30" FontWeight="Bold" FontSize="14" />

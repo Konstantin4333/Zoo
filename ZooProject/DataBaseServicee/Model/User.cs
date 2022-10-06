@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DataBaseServicee.Model
 {
-    internal class User
+    public class User
     {
         public User()
         {
