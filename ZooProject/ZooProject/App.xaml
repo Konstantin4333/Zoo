@@ -4,8 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:ZooProject"
     xmlns:viewmodels="clr-namespace:ZooProject.View_Models"
-    xmlns:views="clr-namespace:ZooProject.View"
-    StartupUri="View/LoginMenu.xaml">
+    xmlns:views="clr-namespace:ZooProject.View">
 
     <Application.Resources />
 </Application>

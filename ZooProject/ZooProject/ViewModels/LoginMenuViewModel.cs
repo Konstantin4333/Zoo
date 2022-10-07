@@ -9,6 +9,7 @@ using ZooProject.Commands;
 using Prism.Commands;
 using DataBaseServicee.Model;
 using DataBaseServicee.DataContext;
+using System.Threading.Tasks;
 
 namespace ZooProject.View_Models
 {
@@ -20,7 +21,7 @@ namespace ZooProject.View_Models
         {
             Password = "1";
             Username = "1";
-           
+
 
         }
         public ZooDataContext dBContext = new ZooDataContext();
@@ -28,7 +29,7 @@ namespace ZooProject.View_Models
         private string username;
         private string password;
         private List<User> users = new List<User>();
-      
+
 
 
 
@@ -83,9 +84,38 @@ namespace ZooProject.View_Models
 
                     if (FillName() != null)
                     {
-                        Window window = new MainMenuWindow();
-                        window.Show();
-                        System.Windows.Application.Current.Windows[0].Close();
+
+                     
+                        var splashScreen = new SplashScreenWindow();
+                       
+                        splashScreen.Show();
+                        System.Threading.Thread.Sleep(30);
+                  
+
+                        Task.Factory.StartNew(() =>
+                        {
+                            for (int i = 1; i <= 100; i++)
+                        {
+                            System.Threading.Thread.Sleep(30);
+
+                          
+                            splashScreen.Dispatcher.Invoke(() => splashScreen.Progress = i);
+                        }
+
+                       
+                        splashScreen.Dispatcher.Invoke(() =>
+                        {
+                       
+                        var mainWindow = new MainMenuWindow();
+                    
+
+                        mainWindow.Show();
+                        splashScreen.Close();
+                       
+                       
+                        });
+                        });
+
                     }
                     else
                     {
@@ -97,7 +127,8 @@ namespace ZooProject.View_Models
             }
         }
 
-       
+      
 
+        
     }
 }
