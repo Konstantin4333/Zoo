@@ -76,6 +76,7 @@
                         IdUser = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Password = c.String(),
+                        IsAdmin = c.Boolean(nullable: false),
                         IsDeleted = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.IdUser);

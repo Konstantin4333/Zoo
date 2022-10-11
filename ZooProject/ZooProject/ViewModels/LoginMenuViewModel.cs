@@ -15,14 +15,14 @@ using System.ComponentModel;
 
 namespace ZooProject.View_Models
 {
-    class LoginMenuViewModel : ViewModelBase
+   public class LoginMenuViewModel : ViewModelBase
     {
 
 
         public LoginMenuViewModel()
         {
-            Password = "1";
-            Username = "1";
+            Password = "Username";
+            Username = "Password";
 
 
         }
@@ -51,8 +51,9 @@ namespace ZooProject.View_Models
             {
                 username = value;
 
-
-                OnPropertyChanged("User");
+                
+                OnPropertyChanged(nameof(Username));
+              
 
             }
         }
@@ -110,12 +111,27 @@ namespace ZooProject.View_Models
                     {
 
                         Loadingbar();
-
+                                               
                     }
                     else
                     {
                         MessageBox.Show("Грешни данни!");
                     }
+
+
+                }));
+            }
+        }
+        private DelegateCommand commandNextss;
+
+        public ICommand CommandNextss
+        {
+            get
+            {
+                return commandNextss ?? (commandNextss = new DelegateCommand(() =>
+                {
+
+                    Username = null;
 
 
                 }));

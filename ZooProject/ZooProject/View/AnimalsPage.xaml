@@ -21,6 +21,20 @@
         <viewmodel:AnimalsViewModel />
     </Page.DataContext>
 
+    <Page.Resources>
+        <Style x:Key="szz" TargetType="{x:Type GroupBox }">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsAdmin}" Value="1">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsAdmin}" Value="0">
+                    <Setter Property="Visibility" Value="Hidden" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    
+    
     <Grid Width="auto" Height="auto">
 
         <Grid.RowDefinitions>
@@ -62,7 +76,7 @@
                     DisplayMemberPath="Name"
                     ItemsSource="{Binding CategoryOfAnimalChoices}"
                     SelectedItem="{Binding CatAnim, Mode=TwoWay}"
-                    SelectedValue="{Binding CatAnim.Name, Mode=TwoWay, UpdateSourceTrigger=Default}"
+                    SelectedValue="{Binding CatAnim.Name, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                     SelectedValuePath="Name" 
                     />
             </GroupBox>
@@ -84,6 +98,25 @@
                     SelectedValue="{Binding SAnimal.Name, Mode=TwoWay}"
                     
                     SelectedValuePath="Name" />
+            </GroupBox>
+
+
+            <GroupBox 
+                Style="{StaticResource szz}"
+                Margin="10,30,10,-10"
+                FontSize="16"
+                FontWeight="Bold"
+                Header="Изтрити категории">
+                <ComboBox
+                    Height="30"
+                    Margin="10,5,10,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    DisplayMemberPath="Name"
+                    ItemsSource="{Binding CategoryOfDeletedAnimalChoices}"
+                    SelectedItem="{Binding CatDelAnim}"
+                    SelectedValue="{Binding CatDelAnim.Name, Mode=TwoWay}"
+                             SelectedValuePath="Name"/>
             </GroupBox>
 
         </WrapPanel>
@@ -146,7 +179,7 @@
 
 
         </StackPanel>
-        <!--<StackPanel Grid.Row="0"
+        <StackPanel Grid.Row="0"
                     Grid.Column="2"
                     Margin="30,0,30,30" 
                     HorizontalAlignment="Right" 
@@ -165,7 +198,7 @@
                 FontWeight="Bold" 
                 FontSize="14"  />
 
-            <Button Content="Запиши"
+            <!--<Button Content="Запиши"
                
                 Command="{Binding Save}"
                 Width="100"
@@ -173,10 +206,10 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Right" 
                 FontWeight="Bold" 
-                FontSize="14" />
+                FontSize="14" />-->
 
             <TextBlock Text="НЕ РАБОТЯТ бутоните " Margin="10" Width="120" Height="30" Background="White"/>
-        </StackPanel>-->
+        </StackPanel>
        
     </Grid>
 </Page>

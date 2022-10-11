@@ -23,6 +23,9 @@
         <viewmodels:LoginMenuViewModel />
     </Window.DataContext>
 
+    
+    
+    
     <Window.Resources>
         <Style x:Key="szz" TargetType="Grid">
             <Style.Triggers>
@@ -34,6 +37,14 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="pass" TargetType="{x:Type TextBox }">
+            
+                    <Setter Property="Text" Value="*" />
+               
+        </Style>
+
+
     </Window.Resources>
 
     <Grid>
@@ -74,8 +85,11 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
                 FontSize="14"
-                Text="{Binding Username}"
-                TextWrapping="Wrap" />
+                
+                Focusable="{Binding CommandNextss}"
+                Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextWrapping="Wrap"
+                />
             <TextBox
                 Name="tbPass"
                 Width="180"
@@ -86,7 +100,8 @@
                 CharacterCasing="Lower"
                 FontSize="14"
                 MaxLength="10"
-                Text="{Binding Password}"
+                
+                Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 TextAlignment="Left"
                 TextWrapping="Wrap" />
         </Grid>
@@ -96,7 +111,13 @@
             <TextBlock
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Text="Loading..." />
+                FontSize="16"
+                FontStyle="Italic">
+               <Run  Text="{Binding Progress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Run Text="%"/>
+            </TextBlock>
+
+
 
         </Grid>
 

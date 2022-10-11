@@ -37,19 +37,7 @@ namespace ZooProject.View_Models
         EventsViewModel eve = new EventsViewModel();
 
 
-        // PRICE,  View ne e dovurshen
-
-
-        /* private CategoryOfTickets price;
-
-         public CategoryOfTickets Price
-         {
-             get { return price; }
-             set { price = value;
-
-                 OnPropertyChanged(nameof(Price));
-             }
-         }*/
+        
         public double FinalPrice
         {
             get { return finalPrice; }

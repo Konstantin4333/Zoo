@@ -1,7 +1,6 @@
 ﻿
 using System.Windows;
-using System.Threading.Tasks;
-using ZooProject.View;
+using System.Windows.Controls;
 
 namespace ZooProject.View
 {
@@ -16,8 +15,8 @@ namespace ZooProject.View
             InitializeComponent();
 
         }
+        
 
-     
 
     }
 }

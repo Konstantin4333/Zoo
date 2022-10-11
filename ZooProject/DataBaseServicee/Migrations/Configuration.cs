@@ -1,6 +1,7 @@
 ﻿namespace DataBaseServicee.Migrations
 {
     using DataBaseServicee.DataContext;
+    using DataBaseServicee.Model;
     using System;
     using System.Data.Entity.Migrations;
     using System.IO;
@@ -16,15 +17,15 @@
 
         protected override void Seed(ZooDataContext context)
         {
-
+            #region CategoriesOfAnimals
             context.categoryOfAnimal.AddOrUpdate(x => x.IdOfCategory,
                 new Model.CategoryOfAnimal() { IdOfCategory = 1, Name = "Бозайник" },
                  new Model.CategoryOfAnimal() { IdOfCategory = 2, Name = "Влечуго" },
                   new Model.CategoryOfAnimal() { IdOfCategory = 3, Name = "Земноводно" },
                    new Model.CategoryOfAnimal() { IdOfCategory = 4, Name = "Птици" }
                 );
-
-
+            #endregion
+            #region Animals
 
             context.animals.AddOrUpdate(x => x.IdAnimal,
                 new Model.Animals()
@@ -76,25 +77,29 @@
                     }
 
                 );
-            //   context.animals.RemoveRange();
-
+            #endregion
+            #region User
             context.user.AddOrUpdate(x => x.IdUser,
-                new Model.User() { IdUser = 1, Name = "admin", Password = "admin" },
-                new Model.User() { IdUser = 2, Name = "1", Password = "1" }
-                );
-
+                new Model.User() { IdUser = 1, Name = "admin", Password = "admin", IsAdmin = true },
+                new Model.User() { IdUser = 2, Name = "1", Password = "1", IsAdmin = false }
+                ); ;
+            #endregion
+            #region TypeOfTickets
             context.categorryOfTickets.AddOrUpdate(x => x.IdOfCategoryTicket,
                 new Model.CategoryOfTickets() { IdOfCategoryTicket = 1, TicketType = "Семеен", price = 8, IsDeleted = 0 },
                 new Model.CategoryOfTickets() { IdOfCategoryTicket = 2, TicketType = "Редовен", price = 12, IsDeleted = 0 },
                 new Model.CategoryOfTickets() { IdOfCategoryTicket = 3, TicketType = "Ученически", price = 5, IsDeleted = 0 },
                 new Model.CategoryOfTickets() { IdOfCategoryTicket = 4, TicketType = "Пенсионер/Дете", price = 0, IsDeleted = 0 }
                 );
-
+            #endregion
+            #region EventsType
             context.eventType.AddOrUpdate(x => x.Id,
                 new Model.EventType() { Id = 1, Type = "Сутрешен", IsDeleted = 0 },
                 new Model.EventType() { Id = 2, Type = "Обеден", IsDeleted = 0 },
                 new Model.EventType() { Id = 3, Type = "Вечерен", IsDeleted = 0 }
                 );
+            #endregion
+            #region Events
             context.events.AddOrUpdate(x => x.Id,
                 new Model.Events()
                 {
@@ -155,8 +160,8 @@
                 }
 
                 );
-            
 
+            #endregion
 
         }
     }

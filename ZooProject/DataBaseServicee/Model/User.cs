@@ -15,6 +15,9 @@ namespace DataBaseServicee.Model
 
         public string Name { get; set; }
         public string Password { get; set; }
+        public bool IsAdmin { get; set; }
+
+       // public Roles Role { get; set; }
         public int IsDeleted { get; set; }
     }
 }

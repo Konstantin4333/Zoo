@@ -11,20 +11,37 @@ namespace DataBaseServicee.FillFromData
 
         private static  ZooDataContext dBContext = new ZooDataContext();
         #region AnimalViewModel Fill
-        public static List<CategoryOfAnimal> FillCatAnimalChoices()
+        public static List<CategoryOfAnimal> FillCatAnimalChoices(CategoryOfAnimal CatAnim, Animals IsDelete)
         {
             /*CategoryOfAnimalChoices = dBContext.categoryOfAnimal
             .Select(catAnim => catAnim).ToList();*/
             List<CategoryOfAnimal> listOfCatAnim = new List<CategoryOfAnimal>();
 
-            if (dBContext.categoryOfAnimal.ToList().Count != 0)
+            if (dBContext.categoryOfAnimal.ToList().Count != 0 )
             {
-                foreach (CategoryOfAnimal categA in dBContext.categoryOfAnimal.ToList().Select(catAnim => catAnim).Distinct())
+                foreach (CategoryOfAnimal categA in dBContext.categoryOfAnimal.ToList().Select(catAnim => catAnim).
+                    Where(a=> a.IdOfCategory == a.IdOfCategory && a.IsDeleted == 0).Distinct())
                 {
                     listOfCatAnim.Add(categA);
                 }
-            }
+            } 
             return listOfCatAnim;
+        }
+        public static List<CategoryOfAnimal> FillCatDelAnimalChoices(CategoryOfAnimal CatDelAnim, Animals IsDelete)
+        {
+            /*CategoryOfAnimalChoices = dBContext.categoryOfAnimal
+            .Select(catAnim => catAnim).ToList();*/
+            List<CategoryOfAnimal> listOfCatDelAnim = new List<CategoryOfAnimal>();
+
+            if (dBContext.categoryOfAnimal.ToList().Count != 0)
+            {
+                foreach (CategoryOfAnimal categA in dBContext.categoryOfAnimal.ToList().Select(catAnim => catAnim).
+                    Where(a => a.IdOfCategory == a.IdOfCategory && a.IsDeleted == 1).Distinct())
+                {
+                    listOfCatDelAnim.Add(categA);
+                }
+            }
+            return listOfCatDelAnim;
         }
 
         public static List<Animals> FillAnimalChoices(CategoryOfAnimal CatAnim)
@@ -96,6 +113,22 @@ namespace DataBaseServicee.FillFromData
                 }
             }
             return listOfTickets;
+        }
+        #endregion
+        #region User
+        public static List<User> FillUsers()
+        {
+
+            List<User> listOfUsers = new List<User>();
+
+            if (dBContext.user.ToList().Count != 0)
+            {
+                foreach (User user in dBContext.user.ToList().Select(usr => usr).Distinct())
+                {
+                    listOfUsers.Add(user);
+                }
+            }
+            return listOfUsers;
         }
         #endregion
     }
