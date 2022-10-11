@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using DataBaseServicee.DataContext;
-
+using ZooProject.Wrapper;
 using DataBaseServicee.Model;
+using DataBaseServicee.FillFromData;
 
 namespace ZooProject.View_Models
 {
@@ -21,6 +22,7 @@ namespace ZooProject.View_Models
         private EventType _eventType;
         private DateTime? _date = null;
         private Events _events;
+       
         #endregion
         #region Properies & Lists
         public EventType EventType
@@ -30,8 +32,9 @@ namespace ZooProject.View_Models
             {
                 _eventType = value;
 
-                FillEvents();
+                CheckEvents();
                 OnPropertyChanged(nameof(EventType));
+          
 
             }
         }
@@ -55,7 +58,7 @@ namespace ZooProject.View_Models
             {
                 _date = value;
 
-                FillEvents();
+                CheckEvents();
                 OnPropertyChanged(nameof(DDate));
 
             }
@@ -69,12 +72,14 @@ namespace ZooProject.View_Models
                 if (eventTypeChoices != value)
                 {
                     eventTypeChoices = value;
+                    CheckEvents();
                     OnPropertyChanged(nameof(EventChoices));
 
                 }
             }
         }
-        public List<Events> EventsChoices
+
+        public List<Events> EventsChoices 
         {
             get { return eventss; }
             set
@@ -89,39 +94,44 @@ namespace ZooProject.View_Models
             }
         }
 
+        public void CheckEvents()
+        {
+            EventsChoices = new List<Events>(WrapFillFromData.FillEvents(DDate, EventType));
+        }
+
         #endregion
         //OPRAVI GO
         #region FILL FROM DATA 
-        public void FillEventsCategoryChoices()
-        {
-            eventTypeChoices = dBContext.eventType
-            .Select(catAnim => catAnim).ToList();
-        }
-        public void FillEvents()
-        {
-            if (EventType == null && DDate != null)
-            {
+        //public void FillEventsCategoryChoices()
+        //{
+        //    eventTypeChoices = dBContext.eventType
+        //    .Select(catAnim => catAnim).ToList();
+        //}
+        //public void FillEvents()
+        //{
+        //    if (EventType == null && DDate != null)
+        //    {
 
-                EventsChoices = dBContext.events.Where(a => a.Date == DDate)
-            .Select(a => a).ToList();
+        //        EventsChoices = dBContext.events.Where(a => a.Date == DDate)
+        //    .Select(a => a).ToList();
 
-            }
-            else if (EventType != null && DDate == null)
-            {
-                EventsChoices = dBContext.events.Where(a => a.Id == EventType.Id)
-            .Select(a => a).ToList();
-            }
-            else if (DDate != null && EventType != null)
-            {
-                EventsChoices = dBContext.events.Where(a => a.Id == EventType.Id && a.Date == DDate)
-            .Select(a => a).ToList();
-            }
-            else
-            {
-                EventsChoices = dBContext.events
-                 .Select(a => a).ToList();
-            }
-        }
+        //    }
+        //    else if (EventType != null && DDate == null)
+        //    {
+        //        EventsChoices = dBContext.events.Where(a => a.Id == EventType.Id)
+        //    .Select(a => a).ToList();
+        //    }
+        //    else if (DDate != null && EventType != null)
+        //    {
+        //        EventsChoices = dBContext.events.Where(a => a.Id == EventType.Id && a.Date == DDate)
+        //    .Select(a => a).ToList();
+        //    }
+        //    else
+        //    {
+        //        EventsChoices = dBContext.events
+        //         .Select(a => a).ToList();
+        //    }
+        //}
         #endregion
         #region Commands
         private DelegateCommand clearAll;
@@ -167,9 +177,15 @@ namespace ZooProject.View_Models
             }
         }
         #endregion
+       
         public EventsViewModel()
         {
-            FillEventsCategoryChoices();
+            eventTypeChoices = new List<EventType>(FillFromData.FillEventsCategoryChoices());
+            // EventsChoices = new List<Events>(FillFromData.FillEvents());
+            CheckEvents();
+
+            //public List<Events> EventsChoices = WrapFillFromData.ChoiceEvent.ToList();
+            //FillEventsCategoryChoices();
         }
 
     }

@@ -14,7 +14,7 @@ namespace DataBaseServicee.Model
         public DateTime Date { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public bool IsDeleted { get; set; }
+        public int IsDeleted { get; set; }
         // Table EventType
         [ForeignKey("EventType")]
 

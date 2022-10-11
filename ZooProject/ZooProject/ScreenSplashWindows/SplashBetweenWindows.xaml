@@ -1,0 +1,27 @@
+﻿<Window x:Class="ZooProject.ScreenSplashWindows.SplashBetweenWindows"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZooProject.ScreenSplashWindows"
+           xmlns:viewmodels="clr-namespace:ZooProject.View_Models"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Title="SplashBetweenWindows"
+        Height="30" 
+        Width="200">
+
+    <Window.DataContext>
+        <viewmodels:LoginMenuViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <ProgressBar
+            x:Name="progressBar1"/>
+        <TextBlock Text="Loading..." 
+                   
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+    </Grid>
+</Window>

@@ -9,6 +9,6 @@ namespace DataBaseServicee.Model
         public int Id { get; set; }
 
         public string Type { get; set; }
-        public bool IsDeleted { get; set; }
+        public int IsDeleted { get; set; }
     }
 }

@@ -10,6 +10,8 @@ using Prism.Commands;
 using DataBaseServicee.Model;
 using DataBaseServicee.DataContext;
 using System.Threading.Tasks;
+using ZooProject.ScreenSplashWindows;
+using System.ComponentModel;
 
 namespace ZooProject.View_Models
 {
@@ -28,10 +30,8 @@ namespace ZooProject.View_Models
         private List<String> list = new List<string>();
         private string username;
         private string password;
+        public bool isVisible = false;
         private List<User> users = new List<User>();
-
-
-
 
         public User FillName()
         {
@@ -69,10 +69,34 @@ namespace ZooProject.View_Models
 
             }
         }
+
+        public bool IsVisible
+        {
+            get { return isVisible; }
+            set
+            {
+                isVisible = value;
+
+
+                OnPropertyChanged(nameof(IsVisible));
+
+            }
+        }
+        private double progress;
+        public double Progress
+        {
+            get { return progress; }
+            private set
+            {
+                progress = value;
+                OnPropertyChanged(nameof(Progress));
+            }
+        }
+
+
         #endregion
-
+        #region Commands
         private DelegateCommand commandNext;
-
 
         public ICommand CommandNext
         {
@@ -81,40 +105,11 @@ namespace ZooProject.View_Models
                 return commandNext ?? (commandNext = new DelegateCommand(() =>
                 {
 
-
+                    IsVisible = true;
                     if (FillName() != null)
                     {
 
-                     
-                        var splashScreen = new SplashScreenWindow();
-                       
-                        splashScreen.Show();
-                        System.Threading.Thread.Sleep(30);
-                  
-
-                        Task.Factory.StartNew(() =>
-                        {
-                            for (int i = 1; i <= 100; i++)
-                        {
-                            System.Threading.Thread.Sleep(30);
-
-                          
-                            splashScreen.Dispatcher.Invoke(() => splashScreen.Progress = i);
-                        }
-
-                       
-                        splashScreen.Dispatcher.Invoke(() =>
-                        {
-                       
-                        var mainWindow = new MainMenuWindow();
-                    
-
-                        mainWindow.Show();
-                        splashScreen.Close();
-                       
-                       
-                        });
-                        });
+                        Loadingbar();
 
                     }
                     else
@@ -127,8 +122,42 @@ namespace ZooProject.View_Models
             }
         }
 
-      
+        public LoginMenu MainWindow { get; private set; }
 
-        
+
+        #endregion
+        #region Functions
+        public void Loadingbar()
+        {
+
+            var logWindow = new LoginMenu();
+            System.Threading.Thread.Sleep(30);
+
+            Task.Factory.StartNew(() =>
+{
+    for (int i = 1; i <= 100; i++)
+    {
+        System.Threading.Thread.Sleep(30);
+
+
+        logWindow.Dispatcher.Invoke(() => Progress = i);
+
+    }
+    logWindow.Dispatcher.Invoke(() =>
+{
+
+    var mainWindow = new MainMenuWindow();
+    mainWindow.Show();
+    logWindow.Close();
+    App.Current.Windows[0].Close();
+
+
+
+});
+});
+        }
+        #endregion
+
+
     }
 }

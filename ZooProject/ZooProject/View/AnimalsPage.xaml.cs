@@ -29,5 +29,7 @@ namespace ZooProject.View
 
             NavigationService.Navigate(ClickedButton.NavUri);
         }
+
+        
     }
 }

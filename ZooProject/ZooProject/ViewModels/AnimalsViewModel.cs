@@ -6,7 +6,7 @@ using System.Windows.Input;
 using DataBaseServicee.DataContext;
 using DataBaseServicee.Model;
 using DataBaseServicee.FillFromData;
-
+using System.IO;
 
 namespace ZooProject.View_Models
 {
@@ -115,21 +115,22 @@ namespace ZooProject.View_Models
         #endregion
         #region Commands
         // testtttttt PROVERI
-        /*public ICommand Delete
+        public ICommand Delete
         {
             get
             {
                 return delete ?? (delete = new DelegateCommand(() =>
                 {
                     ZooDataContext dBContext = new ZooDataContext();
-                     CategoryOfAnimal test = CategoryOfAnimalChoices.;
-                    test.IsDeleted = true;
-                    int a = 1;
-                    dBContext.categoryOfAnimal.Add(test);
+
+
+                    dBContext.categoryOfAnimal.Remove(dBContext.categoryOfAnimal.Where(x => x.IdOfCategory == CatAnim.IdOfCategory).First());
+
+
                     dBContext.SaveChanges();
                 }));
             }
-        }*/
+        }
 
         public ICommand Save
         {
@@ -137,8 +138,16 @@ namespace ZooProject.View_Models
             {
                 return save ?? (save = new DelegateCommand(() =>
                 {
+                    ZooDataContext dBContext = new ZooDataContext();
+                    CategoryOfAnimal animal1 = new CategoryOfAnimal(CatAnim.IdOfCategory,1);
+                   
 
-                    Animals animal1 = new Animals(true);
+
+                    dBContext.categoryOfAnimal.Add(animal1);
+
+
+                    dBContext.SaveChanges();
+
                     /* dBContext.animals.Add(animal1);
                      dBContext.SaveChanges();*/
                 }));

@@ -7,8 +7,17 @@ namespace DataBaseServicee.Model
         [Key]
         public int IdOfCategory { get; set; }
         public string Name { get; set; }
-        public bool IsDeleted { get; set; }
-            
+        public int IsDeleted { get; set; }
+
+        public CategoryOfAnimal(int idOfCategory, int isDeleted)
+        {
+            IdOfCategory = idOfCategory;
         
+            IsDeleted = isDeleted;
+        }
+        public CategoryOfAnimal()
+        {
+
+        }
     }
 }

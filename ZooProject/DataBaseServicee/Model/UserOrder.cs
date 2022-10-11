@@ -16,6 +16,18 @@ namespace DataBaseServicee.Model
         public string TypeOfTicket { get; set; }
         public int price { get; set; }
        
-        public bool IsDeleted { get; set; }
+        public int IsDeleted { get; set; }
+
+        public UserOrder()
+        {
+
+        }
+
+        public UserOrder(string type,int price, int isdeleted)
+        {
+            this.TypeOfTicket = type;
+            this.price = price;
+            this.IsDeleted = isdeleted;
+        }
     }
 }

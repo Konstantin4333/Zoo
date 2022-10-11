@@ -5,6 +5,5 @@
     xmlns:local="clr-namespace:ZooProject"
     xmlns:viewmodels="clr-namespace:ZooProject.View_Models"
     xmlns:views="clr-namespace:ZooProject.View">
-
     <Application.Resources />
 </Application>

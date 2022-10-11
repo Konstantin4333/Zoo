@@ -193,7 +193,7 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Command="{Binding Save}"
-                    Content="Изчисти всички полета"
+                    Content="Save"
                     FontSize="14"
                     FontWeight="Bold" />
 

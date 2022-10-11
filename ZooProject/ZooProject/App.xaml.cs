@@ -1,4 +1,5 @@
 ﻿
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using ZooProject.View;
@@ -17,32 +18,32 @@ namespace ZooProject
                  .InNamespace("ZooProject.ViewModel")
                  .SingleInstance();
          }*/
+      
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
+           
 
-            
             var splashScreen = new SplashScreenWindow();
             this.MainWindow = splashScreen;
             splashScreen.Show();
 
-            
+
             Task.Factory.StartNew(() =>
             {
-                
+
                 for (int i = 1; i <= 100; i++)
                 {
-                    
+
                     System.Threading.Thread.Sleep(30);
 
-                    
+
                     splashScreen.Dispatcher.Invoke(() => splashScreen.Progress = i);
                 }
 
-              
+
                 this.Dispatcher.Invoke(() =>
                 {
-                    
+
                     var mainWindow = new LoginMenu();
                     this.MainWindow = mainWindow;
                     mainWindow.Show();

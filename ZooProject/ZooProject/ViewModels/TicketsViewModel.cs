@@ -143,10 +143,12 @@ namespace ZooProject.View_Models
             {
                 return buy ?? (buy = new DelegateCommand(() =>
                 {
-
+                   int userId;
+                   
                     List<CategoryOfTickets> tickets = new List<CategoryOfTickets>();
-
+                 
                     tickets.Add(CategoryOfTickets);
+                    //tickets.Add(userId);
                     // dBContext.userOrder.Add(tickets);
 
 
@@ -224,7 +226,7 @@ namespace ZooProject.View_Models
                 return addCommand ?? (addCommand = new DelegateCommand(() =>
                 {
                     PriceOfTickets += priceOfticket;
-
+                    
 
                     Console.WriteLine(PriceOfTickets);
 

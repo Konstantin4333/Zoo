@@ -84,16 +84,16 @@
                 );
 
             context.categorryOfTickets.AddOrUpdate(x => x.IdOfCategoryTicket,
-                new Model.CategoryOfTickets() { IdOfCategoryTicket = 1, TicketType = "Семеен", price = 8, IsDeleted = false },
-                new Model.CategoryOfTickets() { IdOfCategoryTicket = 2, TicketType = "Редовен", price = 12, IsDeleted = false },
-                new Model.CategoryOfTickets() { IdOfCategoryTicket = 3, TicketType = "Ученически", price = 5, IsDeleted = false },
-                new Model.CategoryOfTickets() { IdOfCategoryTicket = 4, TicketType = "Пенсионер/Дете", price = 0, IsDeleted = false }
+                new Model.CategoryOfTickets() { IdOfCategoryTicket = 1, TicketType = "Семеен", price = 8, IsDeleted = 0 },
+                new Model.CategoryOfTickets() { IdOfCategoryTicket = 2, TicketType = "Редовен", price = 12, IsDeleted = 0 },
+                new Model.CategoryOfTickets() { IdOfCategoryTicket = 3, TicketType = "Ученически", price = 5, IsDeleted = 0 },
+                new Model.CategoryOfTickets() { IdOfCategoryTicket = 4, TicketType = "Пенсионер/Дете", price = 0, IsDeleted = 0 }
                 );
 
             context.eventType.AddOrUpdate(x => x.Id,
-                new Model.EventType() { Id = 1, Type = "Сутрешен", IsDeleted = false },
-                new Model.EventType() { Id = 2, Type = "Обеден", IsDeleted = false },
-                new Model.EventType() { Id = 3, Type = "Вечерен", IsDeleted = false }
+                new Model.EventType() { Id = 1, Type = "Сутрешен", IsDeleted = 0 },
+                new Model.EventType() { Id = 2, Type = "Обеден", IsDeleted = 0 },
+                new Model.EventType() { Id = 3, Type = "Вечерен", IsDeleted = 0 }
                 );
             context.events.AddOrUpdate(x => x.Id,
                 new Model.Events()
@@ -103,7 +103,7 @@
                     Name = "Слонски прояви",
                     Description = "Наблудение над слонските действия",
                    
-                    IsDeleted = false
+                    IsDeleted = 0
                 },
                 new Model.Events()
                 {
@@ -118,7 +118,7 @@
                     Date = new DateTime(2022, 05, 12),
                     Name = "Слонски прояви",
                     Description = "Наблудение над слонските действия",
-                    IsDeleted = false
+                    IsDeleted = 0
                 },
                 new Model.Events()
                 {
@@ -126,7 +126,7 @@
                     Date = new DateTime(2022, 05, 12),
                     Name = "Змийски прояви",
                     Description = "Наблудение на змията в средата си как ловува",
-                    IsDeleted = false
+                    IsDeleted = 0
                 },
                 new Model.Events()
                 {
@@ -134,7 +134,7 @@
                     Date = new DateTime(2022, 05, 12),
                     Name = "Костенурски развлечения",
                     Description = "По всяко време може да се наблюдава, действията на костенурката",
-                    IsDeleted = false
+                    IsDeleted = 0
                 },
                 new Model.Events()
                 {
@@ -142,7 +142,7 @@
                     Date = new DateTime(2022, 05, 12),
                     Name = "Орела Кирчо",
                     Description = "По всяко време може да се наблюдава Кирчо орелчето",
-                    IsDeleted = false
+                    IsDeleted = 0
                 },
                 new Model.Events()
                 {
@@ -150,7 +150,7 @@
                     Date = new DateTime(2022,05,12),
                     Name = "Слонска баня",
                     Description = "Вечерта може да се наблудава как слоните се къпят",
-                    IsDeleted = false
+                    IsDeleted = 0
 
                 }
 

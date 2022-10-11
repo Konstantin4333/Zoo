@@ -18,6 +18,7 @@
     <None Remove="Pictures\LoginIcon.jpg" />
     <None Remove="Pictures\MainPicture.png" />
     <None Remove="Pictures\orel.jpg" />
+    <None Remove="Pictures\splashScreenImg.jfif" />
     <None Remove="Pictures\tickets.jpg" />
     <None Remove="Pictures\usoinica.jpg" />
     <None Remove="Pictures\Слон.jfif" />
@@ -63,6 +64,7 @@
     <EmbeddedResource Include="Pictures\orel.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Resource Include="Pictures\splashScreenImg.jfif" />
     <Resource Include="Pictures\tickets.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

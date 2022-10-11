@@ -11,7 +11,7 @@ namespace DataBaseServicee.Model
         public string Name { get; set; }
         public string Description { get; set; }
         public byte[] AnimalImage { get; set; }
-        public bool IsDeleted { get; set; }
+        public int IsDeleted { get; set; }
         //
 
         [ForeignKey("CategoryOfAnimal")]
@@ -33,13 +33,13 @@ namespace DataBaseServicee.Model
 
         }
 
-        public Animals(int id, bool isDeleted)
+        public Animals(int id, int isDeleted)
         {
             IdAnimal = id;
             IsDeleted = isDeleted;
         }
 
-        public Animals(bool isDeleted)
+        public Animals(int isDeleted)
         {
 
             IsDeleted = isDeleted;
